@@ -10,6 +10,11 @@
 
 #import "FspKit/FspEngine.h"
 
+#define CONFIG_KEY_USECONFIG @"fspuseconfig_key"
+#define CONFIG_KEY_APPID @"fspappid_key"
+#define CONFIG_KEY_SECRECTKEY @"fspsecretkey_key"
+#define CONFIG_KEY_SERVETADDR @"fspserveraddr_key"
+
 @interface FspManager : NSObject<FspEngineDelegate>
 
 @property FspEngine* fsp_engine;

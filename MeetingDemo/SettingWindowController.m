@@ -35,9 +35,12 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    
     _previewCameraId = FSP_INVALID_CAMERA_ID;
     
+    /*
     self.window.contentView.layer.contents = (id)[NSImage imageNamed:@"set_bg.png"];
+    */
     
     [_btnCancel setImages:[NSImage imageNamed:@"set_bluebtn"]
                       hot:[NSImage imageNamed:@"set_bluebtn_hot"]
@@ -48,6 +51,7 @@
                        hot:[NSImage imageNamed:@"set_bluebtn_hot"]
                      press:[NSImage imageNamed:@"set_bluebtn_pressed"]
                    disable:[NSImage imageNamed:@"set_bluebtn_pressed"]];
+    
     
     _pbSpeakerEnergy.minValue = 0;
     _pbSpeakerEnergy.maxValue = 100;
@@ -62,8 +66,9 @@
     [_pbMicrophoneEnergy startAnimation:nil];
     _pbMicrophoneEnergy.theme = GRProgressIndicatorThemeGreen;
     
-    FspManager* fspM = [FspManager instance];
     
+    
+    FspManager* fspM = [FspManager instance];
     //将设备信息加到ui中
     NSArray<FspAudioDeviceInfo*>* arrMicrophoneDevices = [fspM.fsp_engine getMicrophoneDevices];
     for (FspAudioDeviceInfo* microphoneDevice in arrMicrophoneDevices) {
@@ -92,6 +97,7 @@
         [self onPerSecondTimer];
     }];
     [[NSRunLoop currentRunLoop] addTimer:_perSecondTimer forMode:NSModalPanelRunLoopMode];
+    
 }
 
 -(void) windowWillClose:(NSNotification *)notification {
@@ -128,13 +134,19 @@
 }
 
 - (IBAction)onSliderSpeakerVol:(id)sender {
+    
+    NSInteger intValue = _sliderSpeakerVol.integerValue;
+    
     FspManager* fspM = [FspManager instance];
-    [fspM.fsp_engine setSpeakerVolume:_sliderSpeakerVol.integerValue];
+    [fspM.fsp_engine setSpeakerVolume:intValue];
 }
 
 - (IBAction)onSliderMicrophoneVol:(id)sender {
+    
+    NSInteger intValue = _sliderMicVol.integerValue;
+    
     FspManager* fspM = [FspManager instance];
-    [fspM.fsp_engine setMicrophoneVolume:_sliderMicVol.integerValue];
+    [fspM.fsp_engine setMicrophoneVolume:intValue];
 }
 
 - (IBAction)onBtnCancel:(id)sender {
@@ -152,7 +164,10 @@
 {
     FspManager* fspM = [FspManager instance];
     _pbSpeakerEnergy.doubleValue = [fspM.fsp_engine getSpeakerEnergy];
-    _pbMicrophoneEnergy.doubleValue = [fspM.fsp_engine getMicrophoneEnergy];       
+    _pbMicrophoneEnergy.doubleValue = [fspM.fsp_engine getMicrophoneEnergy];
+    
+    NSLog(@"mic_energy == %lf",(double)[fspM.fsp_engine getMicrophoneEnergy]);
+    NSLog(@"getSpeakerEnergy == %lf",(double)[fspM.fsp_engine getSpeakerEnergy]);
     
     _sliderSpeakerVol.integerValue = [fspM.fsp_engine getSpeakerVolume];
     _sliderMicVol.integerValue = [fspM.fsp_engine getMicrophoneVolume];
@@ -190,7 +205,7 @@
         [fspM.fsp_engine removeVideoPreview:_previewCameraId renderView:_tfRenderView];    
     }
     
-    if ([fspM.fsp_engine addVideoPreview:cameraId renderView:_tfRenderView] == FSP_ERR_OK) {
+    if ([fspM.fsp_engine addVideoPreview:cameraId renderView:_tfRenderView mode:FSP_RENDERMODE_SCALE_FILL] == FSP_ERR_OK) {
         _previewCameraId = cameraId;
     }
 }

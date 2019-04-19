@@ -165,7 +165,7 @@
         
         [myPanel startRender:fspM.myUserId videoId:videoId];
         myPanel.cameraid = nCameraId;
-        [fspM.fsp_engine addVideoPreview:nCameraId renderView:[myPanel renderView]];
+        [fspM.fsp_engine addVideoPreview:nCameraId renderView:[myPanel renderView] mode:FSP_RENDERMODE_SCALE_FILL];
         
         //成功广播了一路视频就改变toolbar的视频按钮状态
         [self setToolBarVideoState:YES];
@@ -284,8 +284,7 @@
     if (eventType == FSP_REMOTE_VIDEO_PUBLISH_STARTED) {
         [userpanel startRender:userId videoId:videoId];
         
-        [fspM.fsp_engine handleRemoteVideo:userId videoId:videoId operation:FSP_REMOTE_VIDEO_OPEN];
-        [fspM.fsp_engine setRemoteVideoRender:userId videoId:videoId renderView:[userpanel renderView]];
+        [fspM.fsp_engine setRemoteVideoRender:userId videoId:videoId renderView:[userpanel renderView] mode:FSP_RENDERMODE_SCALE_FILL];
         
     } else if (eventType == FSP_REMOTE_VIDEO_PUBLISH_STOPED) {
         [userpanel stopRender];

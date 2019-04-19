@@ -10,13 +10,20 @@
 		840A9EB020B408DF000D1379 /* set_bluebtn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 840A9EAD20B408DF000D1379 /* set_bluebtn_pressed.png */; };
 		840A9EB120B408DF000D1379 /* set_bluebtn_hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 840A9EAE20B408DF000D1379 /* set_bluebtn_hot.png */; };
 		840A9EB220B408DF000D1379 /* set_bluebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 840A9EAF20B408DF000D1379 /* set_bluebtn.png */; };
-		840D768820E9B41700DB047E /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840D768720E9B41700DB047E /* FspKit.framework */; };
 		8416943120AE5DB600EB2B56 /* FspUserPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416943020AE5DB600EB2B56 /* FspUserPanel.m */; };
 		8416943320AE5DCF00EB2B56 /* FspUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8416943220AE5DCF00EB2B56 /* FspUserView.xib */; };
 		8421E4F620BFCCCD008892A1 /* aes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8421E4F520BFCCCD008892A1 /* aes.cpp */; };
 		8421E4F820BFD9A7008892A1 /* video_stat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421E4F720BFD9A6008892A1 /* video_stat_bg.png */; };
+		8431A31522450197002904D8 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8431A31422450197002904D8 /* MainWindow.xib */; };
 		846499E620C61F350024509E /* checkbox_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 846499E520C61F350024509E /* checkbox_sel.png */; };
 		846499E820C628820024509E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 846499E720C628820024509E /* checkbox.png */; };
+		846F3D7921F887F7004406EB /* LoginConfigWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F3D7721F887F7004406EB /* LoginConfigWindowController.m */; };
+		846F3D8121F88DE5004406EB /* btn_config_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 846F3D7F21F88DE5004406EB /* btn_config_pressed.png */; };
+		846F3D8221F88DE5004406EB /* btn_config.png in Resources */ = {isa = PBXBuildFile; fileRef = 846F3D8021F88DE5004406EB /* btn_config.png */; };
+		8476CCAA22696A4300FFBC63 /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8476CCA922696A4300FFBC63 /* FspKit.framework */; };
+		8476CCAB22696A4B00FFBC63 /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8476CCA922696A4300FFBC63 /* FspKit.framework */; };
+		8476CCAC22696A4B00FFBC63 /* FspKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8476CCA922696A4300FFBC63 /* FspKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8476CCAF22696BF600FFBC63 /* LoginConfigWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8476CCAE22696BF500FFBC63 /* LoginConfigWindow.xib */; };
 		847D59672085D29500C47074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D59662085D29500C47074 /* AppDelegate.m */; };
 		847D59692085D29500C47074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847D59682085D29500C47074 /* Assets.xcassets */; };
 		847D596C2085D29500C47074 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D596A2085D29500C47074 /* MainMenu.xib */; };
@@ -24,8 +31,6 @@
 		847D59782085D37E00C47074 /* FspManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847D59762085D37E00C47074 /* FspManager.mm */; };
 		847D597D2085D43F00C47074 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597C2085D43500C47074 /* CoreMedia.framework */; };
 		847D59832085D46700C47074 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59822085D46700C47074 /* libiconv.tbd */; };
-		847D59852085D46C00C47074 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59842085D46C00C47074 /* libstdc++.tbd */; };
-		847D59862085D47000C47074 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59812085D46000C47074 /* AVFoundation.framework */; };
 		847D59872085D47500C47074 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59802085D45B00C47074 /* AudioToolbox.framework */; };
 		847D59882085D47F00C47074 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597E2085D44900C47074 /* VideoToolbox.framework */; };
 		847D59892085D50200C47074 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597F2085D45100C47074 /* CoreAudio.framework */; };
@@ -58,13 +63,11 @@
 		84CFF3EE20AD8D2300DF7602 /* toolbar_cam_open_hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CFF3DF20AD8D2300DF7602 /* toolbar_cam_open_hot.png */; };
 		84CFF3EF20AD8D2300DF7602 /* toolbar_cam_open_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CFF3E020AD8D2300DF7602 /* toolbar_cam_open_pressed.png */; };
 		84CFF3F020AD8D2300DF7602 /* toolbar_cam_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CFF3E120AD8D2300DF7602 /* toolbar_cam_pressed.png */; };
-		84F2AD3320CA9C9000413058 /* MeetingDemo.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847D59622085D29500C47074 /* MeetingDemo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84FD677320AC2FDE00548D04 /* VideoDecodeAcceleration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FD677220AC2FD600548D04 /* VideoDecodeAcceleration.framework */; };
 		84FD677520AC2FE700548D04 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FD677420AC2FE700548D04 /* libz.1.2.8.tbd */; };
 		84FD677C20AC30C700548D04 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD677A20AC30C700548D04 /* MainWindowController.m */; };
 		84FD678B20AC3B8200548D04 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD678920AC3B8200548D04 /* LoginWindowController.m */; };
 		84FD679420AC552300548D04 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FD679320AC552300548D04 /* login_bg.png */; };
-		84FD679720AC56A100548D04 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD679520AC56A100548D04 /* MainWindow.xib */; };
 		84FD679820AC56A100548D04 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD679620AC56A100548D04 /* LoginWindow.xib */; };
 		84FD679C20AC58DA00548D04 /* login_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FD679920AC58DA00548D04 /* login_btn_pressed.png */; };
 		84FD679D20AC58DA00548D04 /* login_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FD679A20AC58DA00548D04 /* login_btn.png */; };
@@ -73,14 +76,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84F2AD3220CA9C8200413058 /* CopyFiles */ = {
+		8476CCAD22696A4B00FFBC63 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "${PROJECT_DIR}../../../output/demos/mac";
-			dstSubfolderSpec = 0;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
 			files = (
-				84F2AD3320CA9C9000413058 /* MeetingDemo.app in CopyFiles */,
+				8476CCAC22696A4B00FFBC63 /* FspKit.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -89,7 +93,6 @@
 		840A9EAD20B408DF000D1379 /* set_bluebtn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = set_bluebtn_pressed.png; path = MeetingDemo/Resources/set_bluebtn_pressed.png; sourceTree = "<group>"; };
 		840A9EAE20B408DF000D1379 /* set_bluebtn_hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = set_bluebtn_hot.png; path = MeetingDemo/Resources/set_bluebtn_hot.png; sourceTree = "<group>"; };
 		840A9EAF20B408DF000D1379 /* set_bluebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = set_bluebtn.png; path = MeetingDemo/Resources/set_bluebtn.png; sourceTree = "<group>"; };
-		840D768720E9B41700DB047E /* FspKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FspKit.framework; sourceTree = "<group>"; };
 		8416942F20AE5DB600EB2B56 /* FspUserPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FspUserPanel.h; path = MeetingDemo/UIWidgets/FspUserPanel.h; sourceTree = "<group>"; };
 		8416943020AE5DB600EB2B56 /* FspUserPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FspUserPanel.m; path = MeetingDemo/UIWidgets/FspUserPanel.m; sourceTree = "<group>"; };
 		8416943220AE5DCF00EB2B56 /* FspUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FspUserView.xib; path = MeetingDemo/Resources/FspUserView.xib; sourceTree = "<group>"; };
@@ -98,8 +101,15 @@
 		8421E4F420BFCCCD008892A1 /* fsp_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fsp_tools.h; path = MeetingDemo/Token/fsp_tools.h; sourceTree = "<group>"; };
 		8421E4F520BFCCCD008892A1 /* aes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aes.cpp; path = MeetingDemo/Token/aes.cpp; sourceTree = "<group>"; };
 		8421E4F720BFD9A6008892A1 /* video_stat_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_stat_bg.png; path = MeetingDemo/Resources/video_stat_bg.png; sourceTree = "<group>"; };
+		8431A31422450197002904D8 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = MeetingDemo/Resources/MainWindow.xib; sourceTree = "<group>"; };
 		846499E520C61F350024509E /* checkbox_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_sel.png; path = MeetingDemo/Resources/checkbox_sel.png; sourceTree = "<group>"; };
 		846499E720C628820024509E /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox.png; path = MeetingDemo/Resources/checkbox.png; sourceTree = "<group>"; };
+		846F3D7621F887F7004406EB /* LoginConfigWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginConfigWindowController.h; sourceTree = "<group>"; };
+		846F3D7721F887F7004406EB /* LoginConfigWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginConfigWindowController.m; sourceTree = "<group>"; };
+		846F3D7F21F88DE5004406EB /* btn_config_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_config_pressed.png; path = MeetingDemo/Resources/btn_config_pressed.png; sourceTree = "<group>"; };
+		846F3D8021F88DE5004406EB /* btn_config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_config.png; path = MeetingDemo/Resources/btn_config.png; sourceTree = "<group>"; };
+		8476CCA922696A4300FFBC63 /* FspKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FspKit.framework; sourceTree = "<group>"; };
+		8476CCAE22696BF500FFBC63 /* LoginConfigWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginConfigWindow.xib; path = MeetingDemo/Resources/LoginConfigWindow.xib; sourceTree = "<group>"; };
 		847D59622085D29500C47074 /* MeetingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847D59652085D29500C47074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		847D59662085D29500C47074 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,7 +117,6 @@
 		847D596B2085D29500C47074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		847D596D2085D29500C47074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847D596E2085D29500C47074 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		847D59702085D29500C47074 /* MeetingDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingDemo.entitlements; sourceTree = "<group>"; };
 		847D59762085D37E00C47074 /* FspManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FspManager.mm; sourceTree = "<group>"; };
 		847D59772085D37E00C47074 /* FspManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FspManager.h; sourceTree = "<group>"; };
 		847D597C2085D43500C47074 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -116,7 +125,6 @@
 		847D59802085D45B00C47074 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		847D59812085D46000C47074 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		847D59822085D46700C47074 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		847D59842085D46C00C47074 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		848EF67720AEAE070043B4F9 /* FspUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FspUtils.h; sourceTree = "<group>"; };
 		848EF67820AEAE3C0043B4F9 /* FspUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FspUtils.m; sourceTree = "<group>"; };
 		8492E5F620B2A4900002EC81 /* SettingWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingWindowController.h; sourceTree = "<group>"; };
@@ -158,7 +166,6 @@
 		84FD678820AC3B8200548D04 /* LoginWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		84FD678920AC3B8200548D04 /* LoginWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
 		84FD679320AC552300548D04 /* login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_bg.png; path = MeetingDemo/Resources/login_bg.png; sourceTree = "<group>"; };
-		84FD679520AC56A100548D04 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = MeetingDemo/Resources/MainWindow.xib; sourceTree = "<group>"; };
 		84FD679620AC56A100548D04 /* LoginWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindow.xib; path = MeetingDemo/Resources/LoginWindow.xib; sourceTree = "<group>"; };
 		84FD679920AC58DA00548D04 /* login_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn_pressed.png; path = MeetingDemo/Resources/login_btn_pressed.png; sourceTree = "<group>"; };
 		84FD679A20AC58DA00548D04 /* login_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn.png; path = MeetingDemo/Resources/login_btn.png; sourceTree = "<group>"; };
@@ -172,16 +179,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840D768820E9B41700DB047E /* FspKit.framework in Frameworks */,
+				8476CCAA22696A4300FFBC63 /* FspKit.framework in Frameworks */,
 				84FD677320AC2FDE00548D04 /* VideoDecodeAcceleration.framework in Frameworks */,
-				847D59852085D46C00C47074 /* libstdc++.tbd in Frameworks */,
+				8476CCAB22696A4B00FFBC63 /* FspKit.framework in Frameworks */,
 				84FD677520AC2FE700548D04 /* libz.1.2.8.tbd in Frameworks */,
 				847D59832085D46700C47074 /* libiconv.tbd in Frameworks */,
 				847D59872085D47500C47074 /* AudioToolbox.framework in Frameworks */,
 				847D59892085D50200C47074 /* CoreAudio.framework in Frameworks */,
 				847D59882085D47F00C47074 /* VideoToolbox.framework in Frameworks */,
 				847D597D2085D43F00C47074 /* CoreMedia.framework in Frameworks */,
-				847D59862085D47000C47074 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +236,6 @@
 				847D596A2085D29500C47074 /* MainMenu.xib */,
 				847D596D2085D29500C47074 /* Info.plist */,
 				847D596E2085D29500C47074 /* main.m */,
-				847D59702085D29500C47074 /* MeetingDemo.entitlements */,
 				84FD677920AC30C700548D04 /* MainWindowController.h */,
 				84FD677A20AC30C700548D04 /* MainWindowController.m */,
 				84FD678820AC3B8200548D04 /* LoginWindowController.h */,
@@ -239,6 +244,8 @@
 				848EF67820AEAE3C0043B4F9 /* FspUtils.m */,
 				8492E5F620B2A4900002EC81 /* SettingWindowController.h */,
 				8492E5F720B2A4900002EC81 /* SettingWindowController.m */,
+				846F3D7621F887F7004406EB /* LoginConfigWindowController.h */,
+				846F3D7721F887F7004406EB /* LoginConfigWindowController.m */,
 			);
 			path = MeetingDemo;
 			sourceTree = "<group>";
@@ -246,10 +253,9 @@
 		847D59792085D41100C47074 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				840D768720E9B41700DB047E /* FspKit.framework */,
+				8476CCA922696A4300FFBC63 /* FspKit.framework */,
 				84FD677420AC2FE700548D04 /* libz.1.2.8.tbd */,
 				84FD677220AC2FD600548D04 /* VideoDecodeAcceleration.framework */,
-				847D59842085D46C00C47074 /* libstdc++.tbd */,
 				847D59822085D46700C47074 /* libiconv.tbd */,
 				847D59812085D46000C47074 /* AVFoundation.framework */,
 				847D59802085D45B00C47074 /* AudioToolbox.framework */,
@@ -263,6 +269,9 @@
 		84FD678D20AC528200548D04 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8476CCAE22696BF500FFBC63 /* LoginConfigWindow.xib */,
+				846F3D7F21F88DE5004406EB /* btn_config_pressed.png */,
+				846F3D8021F88DE5004406EB /* btn_config.png */,
 				84B507E420C7C87A00EEBE6C /* video_stat_audio_open.png */,
 				846499E720C628820024509E /* checkbox.png */,
 				846499E520C61F350024509E /* checkbox_sel.png */,
@@ -298,7 +307,7 @@
 				84FD679920AC58DA00548D04 /* login_btn_pressed.png */,
 				84FD679A20AC58DA00548D04 /* login_btn.png */,
 				84FD679620AC56A100548D04 /* LoginWindow.xib */,
-				84FD679520AC56A100548D04 /* MainWindow.xib */,
+				8431A31422450197002904D8 /* MainWindow.xib */,
 				84FD679320AC552300548D04 /* login_bg.png */,
 				8416943220AE5DCF00EB2B56 /* FspUserView.xib */,
 			);
@@ -331,7 +340,7 @@
 				847D595E2085D29500C47074 /* Sources */,
 				847D595F2085D29500C47074 /* Frameworks */,
 				847D59602085D29500C47074 /* Resources */,
-				84F2AD3220CA9C8200413058 /* CopyFiles */,
+				8476CCAD22696A4B00FFBC63 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,13 +394,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846F3D8121F88DE5004406EB /* btn_config_pressed.png in Resources */,
 				84B507E520C7C87A00EEBE6C /* video_stat_audio_open.png in Resources */,
 				84CFF3E820AD8D2300DF7602 /* toolbar_cam.png in Resources */,
 				84FD679D20AC58DA00548D04 /* login_btn.png in Resources */,
 				8492E5FE20B2BE260002EC81 /* set_bg.png in Resources */,
 				84CFF3CD20AD8A8600DF7602 /* toolbar_mic_open_hot.png in Resources */,
 				84CFF3D120AD8B2E00DF7602 /* toolbar_mic_hot.png in Resources */,
-				84FD679720AC56A100548D04 /* MainWindow.xib in Resources */,
 				84CFF3CE20AD8A8600DF7602 /* toolbar_mic_pressed.png in Resources */,
 				84CFF3C620AD872600DF7602 /* video_icon_default.png in Resources */,
 				84CFF3F020AD8D2300DF7602 /* toolbar_cam_pressed.png in Resources */,
@@ -405,6 +414,7 @@
 				847D59692085D29500C47074 /* Assets.xcassets in Resources */,
 				84CFF3E520AD8D2300DF7602 /* toolbar_cam_hot.png in Resources */,
 				84CFF3E420AD8D2300DF7602 /* toolbar_settings_hot.png in Resources */,
+				8431A31522450197002904D8 /* MainWindow.xib in Resources */,
 				84FD679420AC552300548D04 /* login_bg.png in Resources */,
 				840A9EB120B408DF000D1379 /* set_bluebtn_hot.png in Resources */,
 				84CFF3BD20AD7F6B00DF7602 /* video_toolbar_bg.png in Resources */,
@@ -415,6 +425,7 @@
 				84CFF3EA20AD8D2300DF7602 /* toolbar_settings.png in Resources */,
 				8492E5FC20B2AD840002EC81 /* SettingWindow.xib in Resources */,
 				840A9EB020B408DF000D1379 /* set_bluebtn_pressed.png in Resources */,
+				846F3D8221F88DE5004406EB /* btn_config.png in Resources */,
 				846499E820C628820024509E /* checkbox.png in Resources */,
 				84CFF3EC20AD8D2300DF7602 /* toolbar_menu_bg.png in Resources */,
 				8416943320AE5DCF00EB2B56 /* FspUserView.xib in Resources */,
@@ -423,6 +434,7 @@
 				84CFF3E320AD8D2300DF7602 /* toolbar_mic_open_pressed.png in Resources */,
 				840A9EB220B408DF000D1379 /* set_bluebtn.png in Resources */,
 				84CFF3EE20AD8D2300DF7602 /* toolbar_cam_open_hot.png in Resources */,
+				8476CCAF22696BF600FFBC63 /* LoginConfigWindow.xib in Resources */,
 				84CFF3CB20AD8A8600DF7602 /* toolbar_mic_open.png in Resources */,
 				846499E620C61F350024509E /* checkbox_sel.png in Resources */,
 			);
@@ -436,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8492E5F920B2A4900002EC81 /* SettingWindowController.m in Sources */,
+				846F3D7921F887F7004406EB /* LoginConfigWindowController.m in Sources */,
 				8421E4F620BFCCCD008892A1 /* aes.cpp in Sources */,
 				84FD677C20AC30C700548D04 /* MainWindowController.m in Sources */,
 				84FD67A720AC624700548D04 /* FspStateButton.m in Sources */,
@@ -495,10 +508,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../output/mac;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -548,10 +561,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../output/mac;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";

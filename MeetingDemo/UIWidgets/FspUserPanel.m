@@ -52,6 +52,9 @@
     FspUserViewController* _userViewController;
     FspRenderMode _currentRenderMode;
     BOOL _isAudioOpened;
+    
+    NSRect originFrame;
+    NSRect fullScreenFrame;
 }
 @end
 
@@ -70,6 +73,9 @@
 {
     return _currentRenderMode;    
 }
+
+
+
 
 - (instancetype)initWithCoder:(NSCoder*)coder
 {    
@@ -102,7 +108,7 @@
     
     [_userViewController.renderView setHidden:NO];
     [_userViewController.textVideoInfo setHidden:NO];     
-    
+
     //mac 暂不支持渲染模式设置
     
     /*

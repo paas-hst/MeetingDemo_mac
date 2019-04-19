@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController">
             <connections>
+                <outlet property="btnConfig" destination="wYK-Ws-aUO" id="YTK-IV-VhQ"/>
                 <outlet property="btnLogin" destination="ech-Uo-JHc" id="xIx-hr-6pQ"/>
-                <outlet property="textGroupId" destination="Cdm-GP-1cU" id="gH6-w2-ndp"/>
+                <outlet property="textGroupId" destination="tEP-hK-7Yw" id="krf-QZ-pWH"/>
                 <outlet property="textLoginInfo" destination="zdA-te-RZH" id="kjx-gu-Kv0"/>
-                <outlet property="textUserId" destination="OGI-sc-BEC" id="qM5-ra-iN1"/>
+                <outlet property="textUserId" destination="cWB-1d-qXa" id="2YA-PE-UV2"/>
+                <outlet property="textVersionInfo" destination="Nje-gS-wvj" id="aJC-yW-fbr"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="FspClient" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="FspClient" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1176" height="709"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
-            <value key="minSize" type="size" width="887" height="562"/>
+            <rect key="contentRect" x="196" y="240" width="694" height="519"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="878"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="1176" height="709"/>
+                <rect key="frame" x="0.0" y="0.0" width="694" height="519"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ech-Uo-JHc" customClass="FspStateButton">
-                        <rect key="frame" x="445" y="242" width="305" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="195" y="200" width="305" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="加入" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cZE-Of-NyN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -37,53 +39,76 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-JJ-FRh">
-                        <rect key="frame" x="554" y="432" width="85" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="305" y="383" width="85" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="登录" id="d4w-pr-DNP">
                             <font key="font" size="40" name=".PingFangSC-Regular"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cdm-GP-1cU">
-                        <rect key="frame" x="451" y="377" width="293" height="39"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="left" placeholderString="请输入GroupId" bezelStyle="round" id="4eU-af-P96">
-                            <font key="font" metaFont="system" size="16"/>
-                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-sc-BEC">
-                        <rect key="frame" x="451" y="305" width="293" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="left" placeholderString="请输入UserId" bezelStyle="round" id="NbR-uG-8Zk">
-                            <font key="font" metaFont="system" size="16"/>
-                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNm-6D-gpW">
-                        <rect key="frame" x="426" y="50" width="329" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="183" y="74" width="329" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright © 2013-2018 hst.com. All Rights Reserved." id="bBr-E7-SST">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.32941176470588235" green="0.36470588235294116" blue="0.45882352941176469" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nje-gS-wvj">
+                        <rect key="frame" x="183" y="106" width="329" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="082-J1-Boo">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" red="0.3294117647" green="0.36470588240000001" blue="0.45882352939999999" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wYK-Ws-aUO">
+                        <rect key="frame" x="553" y="446" width="72" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Gip-SN-F5d"/>
+                            <constraint firstAttribute="width" constant="72" id="VRL-EH-QIM"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="配置" bezelStyle="rounded" image="btn_config" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Pe5-mS-IiP">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="systemLight" size="12"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onBtnConfig:" target="-2" id="9aD-ee-h7L"/>
+                        </connections>
+                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzD-sK-aCp">
-                        <rect key="frame" x="510" y="24" width="150" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="272" y="35" width="150" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="深圳银澎云计算有限公司" id="1PZ-Gh-5mW">
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                             <color key="textColor" red="0.3294117647" green="0.36470588240000001" blue="0.45882352939999999" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tEP-hK-7Yw">
+                        <rect key="frame" x="201" y="343" width="293" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="请输入Group ID" drawsBackground="YES" id="pll-rf-IBK">
+                            <font key="font" metaFont="system" size="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWB-1d-qXa">
+                        <rect key="frame" x="201" y="300" width="293" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="请输入User ID" drawsBackground="YES" id="4il-zO-NAA">
+                            <font key="font" metaFont="system" size="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdA-te-RZH">
-                        <rect key="frame" x="480" y="194" width="216" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="194" y="10" width="306" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="6UF-j9-Hgs">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -91,11 +116,21 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="wYK-Ws-aUO" secondAttribute="bottom" constant="446" id="TxN-w0-mE9"/>
+                    <constraint firstItem="wYK-Ws-aUO" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="553" id="bRU-Qq-HpM"/>
+                    <constraint firstAttribute="trailing" secondItem="wYK-Ws-aUO" secondAttribute="trailing" constant="69" id="dLb-Jt-jX8"/>
+                    <constraint firstItem="wYK-Ws-aUO" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="48" id="rWH-cJ-VjY"/>
+                    <constraint firstAttribute="trailing" secondItem="wYK-Ws-aUO" secondAttribute="trailing" constant="69" id="yEI-J0-pWS"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="480" y="111.5"/>
+            <point key="canvasLocation" x="269" y="-368"/>
         </window>
     </objects>
+    <resources>
+        <image name="btn_config" width="240" height="72"/>
+    </resources>
 </document>

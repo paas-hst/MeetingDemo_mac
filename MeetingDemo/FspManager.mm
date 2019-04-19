@@ -13,11 +13,12 @@
 {
     NSMutableArray* _arrEventDelegates;
     NSMutableDictionary* _dictPublishedVideos;
+    
+    NSString* _strAppId;
+    NSString* _strSecretKey;
+    NSString* _strServerAddr;
 }
 @end
-
-#define APP_ID ""
-#define APP_SECRET_KEY ""
 
 @implementation FspManager
 
@@ -51,7 +52,21 @@
     NSArray * documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
     NSString * documentPath = [documentPaths objectAtIndex:0];
     
-    self.fsp_engine = [FspEngine sharedEngineWithAppId:@APP_ID logPath:documentPath serverAddr:@"" delegate:self];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL useConfigVal = [userDefaults boolForKey:CONFIG_KEY_USECONFIG];
+    
+    if (useConfigVal) {
+        _strAppId = [userDefaults stringForKey:CONFIG_KEY_APPID];
+        _strSecretKey = [userDefaults stringForKey:CONFIG_KEY_SECRECTKEY];
+        _strServerAddr = [userDefaults stringForKey:CONFIG_KEY_SERVETADDR];
+    } else {
+        _strAppId = @"925aa51ebf829d49fc98b2fca5d963bc";
+        _strSecretKey = @"d52be60bb810d17e";
+        _strServerAddr = @"";
+    }
+    
+    self.fsp_engine = [FspEngine sharedEngineWithAppId:_strAppId logPath:documentPath serverAddr:_strServerAddr delegate:self];
     if (nil == self.fsp_engine) {
         return NO;
     }
@@ -62,7 +77,6 @@
 -(void)destroy
 {
     [self.fsp_engine leaveGroup];
-    [FspEngine destroy];
 }
 
 -(void) addEventDelegate:(id<FspEngineDelegate>)delegate
@@ -90,9 +104,9 @@
                  userId:(NSString * _Nonnull)userId
 {
     //生成token的代码应该在服务器， demo中直接生成token不是 正确的做法
-    fsp::tools::AccessToken token(APP_SECRET_KEY);
+    fsp::tools::AccessToken token([_strSecretKey UTF8String]);
     
-    token.app_id = APP_ID;
+    token.app_id = [_strAppId UTF8String];
     token.group_id = [grouplId UTF8String];
     token.user_id = [userId UTF8String];
     token.expire_time = 0;
