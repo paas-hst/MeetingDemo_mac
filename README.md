@@ -29,7 +29,7 @@ FSP SDK支持 iOS / Android / Windows / macOS 等多个平台，你可以查看�
 #define APP_SECRET_KEY ""
 ```
 
-然后在 [FSP官网 下载](http://paas.hst.com/downloadSDK) 下载SDK，将下载后的framework放在工程所在目录。
+然后在 [FSP官网 下载](http://paas.hst.com/developer/downloadSDK) 下载SDK，将下载后的framework放在工程所在目录。
 
 最后使用 XCode 打开 MeetingDemo.xcodeproj，设置有效的开发者签名后即可运行。
 
@@ -38,6 +38,6 @@ FSP SDK支持 iOS / Android / Windows / macOS 等多个平台，你可以查看�
 
 ## 联系我们
 
-- 完整的 API 文档见 [开发者中心](http://paas.hst.com/platformDesc)
+- 完整的 API 文档见 [开发者中心](http://paas.hst.com/developer/platformDesc)
 - 如果发现demo的bug, 或想优化demo代码， 欢迎提交
 - 如果有任何咨询问题, 可以拨打 400-1199-666， 0755 83885517, 或加入QQ群 783541706 提问
