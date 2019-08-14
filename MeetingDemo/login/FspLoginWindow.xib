@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FspLoginWindow" customModule="MeetingDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="inputUserIdField" destination="MHF-wI-33o" id="1Ui-i0-9GZ"/>
+                <outlet property="load_load" destination="JkF-zf-tBL" id="QMI-dZ-hMz"/>
+                <outlet property="load_view" destination="JPc-8g-vLZ" id="3fD-gA-bJB"/>
+                <outlet property="loginBtn" destination="ImQ-LU-dZI" id="CH0-uc-nR8"/>
+                <outlet property="login_view" destination="pua-X7-nwA" id="6d0-gN-fUM"/>
+                <outlet property="settingsBtn" destination="E9P-NJ-GoQ" id="TIk-V5-wu9"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" userLabel="登录">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES"/>
+            <rect key="contentRect" x="682" y="333" width="514" height="390"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="514" height="390"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HlX-Ge-dLA">
+                        <rect key="frame" x="205" y="272" width="104" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="QCE-l1-HrM"/>
+                            <constraint firstAttribute="height" constant="40" id="cB3-vP-qtE"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="登录" id="9IY-bn-WZE">
+                            <font key="font" metaFont="system" size="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="pua-X7-nwA">
+                        <rect key="frame" x="0.0" y="0.0" width="514" height="249"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHF-wI-33o">
+                                <rect key="frame" x="107" y="195" width="301" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="请输入用户ID" bezelStyle="round" id="E1p-uU-xc4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-NJ-GoQ" customClass="FspStateButton">
+                                <rect key="frame" x="245" y="13" width="24" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="8K9-jn-8kb"/>
+                                    <constraint firstAttribute="width" constant="12" id="vLF-my-hK1"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LAB-A4-aB7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="SettingsBtnDidClick:" target="-2" id="gDC-fS-aH8"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-LU-dZI" customClass="FspStateButton">
+                                <rect key="frame" x="101" y="147" width="313" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w9m-Pc-KO6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="loginBtnDidClick:" target="-2" id="0XR-Fc-Jvy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="249" id="D0m-i4-dm8"/>
+                            <constraint firstAttribute="trailing" secondItem="E9P-NJ-GoQ" secondAttribute="trailing" constant="251" id="Jzf-l0-adO"/>
+                            <constraint firstItem="E9P-NJ-GoQ" firstAttribute="leading" secondItem="pua-X7-nwA" secondAttribute="leading" constant="251" id="QIv-GS-Raz"/>
+                            <constraint firstAttribute="bottom" secondItem="E9P-NJ-GoQ" secondAttribute="bottom" constant="20" id="zgS-8c-oZX"/>
+                        </constraints>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="pua-X7-nwA" secondAttribute="bottom" id="67N-jJ-YcP"/>
+                    <constraint firstItem="pua-X7-nwA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="Av3-QD-hw6"/>
+                    <constraint firstItem="HlX-Ge-dLA" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="78" id="F55-cE-wMy"/>
+                    <constraint firstAttribute="trailing" secondItem="pua-X7-nwA" secondAttribute="trailing" id="RXj-Ig-qoB"/>
+                    <constraint firstItem="HlX-Ge-dLA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="207" id="XGD-XW-gLP"/>
+                    <constraint firstAttribute="trailing" secondItem="HlX-Ge-dLA" secondAttribute="trailing" constant="207" id="jCb-jv-OZ3"/>
+                    <constraint firstItem="HlX-Ge-dLA" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="lFv-l8-mvS"/>
+                    <constraint firstItem="pua-X7-nwA" firstAttribute="top" secondItem="HlX-Ge-dLA" secondAttribute="bottom" constant="23" id="tA0-L5-R9S"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="92" y="-82"/>
+        </window>
+        <customView id="JPc-8g-vLZ">
+            <rect key="frame" x="0.0" y="0.0" width="514" height="249"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JkF-zf-tBL" customClass="FMLoading">
+                    <rect key="frame" x="295" y="109" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttE-1x-fIl">
+                    <rect key="frame" x="163" y="116" width="115" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="正在登录服务器..." id="utE-Ko-qsb">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="92" y="307"/>
+        </customView>
+    </objects>
+</document>

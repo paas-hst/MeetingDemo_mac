@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FspCollectionViewCell" customModule="MeetingDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="Btn" destination="rkJ-vg-AWP" id="VrE-rB-EP4"/>
+                <outlet property="backView" destination="Ptg-8i-UOn" id="7bL-u6-DB9"/>
+                <outlet property="maskView" destination="Se7-3r-3yI" id="i7s-x6-UbG"/>
+                <outlet property="noVideoStatusView" destination="Zgt-vS-9ev" id="DFW-XM-zUb"/>
+                <outlet property="renderView" destination="Wke-2P-Esr" id="6h3-y4-TSt"/>
+                <outlet property="userid_text" destination="RGQ-yU-t1v" id="TxU-uX-F4U"/>
+                <outlet property="userid_view" destination="zDC-8N-POo" id="R7K-rM-4lw"/>
+                <outlet property="videoStatusText" destination="HKn-Su-2oK" id="iFl-U6-Rkg"/>
+                <outlet property="videoStatusView" destination="RPP-EB-1y1" id="CkV-yx-d9b"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY" userLabel="view" customClass="FspCollectionViewCell" customModule="MeetingDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="296" height="276"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ptg-8i-UOn">
+                    <rect key="frame" x="0.0" y="0.0" width="296" height="276"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Wke-2P-Esr" userLabel="renderView">
+                            <rect key="frame" x="0.0" y="0.0" width="296" height="276"/>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Se7-3r-3yI" userLabel="maskView">
+                            <rect key="frame" x="0.0" y="0.0" width="296" height="276"/>
+                            <subviews>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="zDC-8N-POo" userLabel="userid_View">
+                                    <rect key="frame" x="8" y="240" width="100" height="20"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RGQ-yU-t1v">
+                                            <rect key="frame" x="11" y="2" width="79" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17" id="CR5-Kg-O73"/>
+                                                <constraint firstAttribute="width" constant="75" id="XZw-2n-NFZ"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2421414" id="k3u-NC-wp2">
+                                                <font key="font" metaFont="cellTitle"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="RGQ-yU-t1v" secondAttribute="trailing" constant="12" id="4tP-21-ch4"/>
+                                        <constraint firstAttribute="width" constant="100" id="QRy-zv-dqY"/>
+                                        <constraint firstAttribute="height" constant="20" id="a5H-dE-vOq"/>
+                                        <constraint firstItem="RGQ-yU-t1v" firstAttribute="leading" secondItem="zDC-8N-POo" secondAttribute="leading" constant="13" id="mtF-wp-pWM"/>
+                                        <constraint firstItem="RGQ-yU-t1v" firstAttribute="centerY" secondItem="zDC-8N-POo" secondAttribute="centerY" id="xtf-eA-K0D"/>
+                                    </constraints>
+                                </customView>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="RPP-EB-1y1" userLabel="video_status_view">
+                                    <rect key="frame" x="8" y="8" width="200" height="20"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HKn-Su-2oK">
+                                            <rect key="frame" x="11" y="2" width="178" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="43441414" id="Ib7-gh-B1v">
+                                                <font key="font" metaFont="cellTitle"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="6gz-KQ-tuj"/>
+                                        <constraint firstAttribute="width" constant="200" id="EtJ-Ac-Hg9"/>
+                                        <constraint firstAttribute="trailing" secondItem="HKn-Su-2oK" secondAttribute="trailing" constant="13" id="IjN-us-LbW"/>
+                                        <constraint firstItem="HKn-Su-2oK" firstAttribute="centerY" secondItem="RPP-EB-1y1" secondAttribute="centerY" id="P4w-QT-mde"/>
+                                        <constraint firstItem="HKn-Su-2oK" firstAttribute="leading" secondItem="RPP-EB-1y1" secondAttribute="leading" constant="13" id="UrN-xx-rw1"/>
+                                    </constraints>
+                                </customView>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rkJ-vg-AWP">
+                                    <rect key="frame" x="268" y="240" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="EhX-Ji-wq4"/>
+                                        <constraint firstAttribute="width" constant="20" id="HvG-U1-Qsr"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="gengduo" imagePosition="overlaps" alignment="center" alternateImage="gengduo-3" transparent="YES" imageScaling="proportionallyDown" inset="2" id="TjV-h5-FXu">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="showVideoRenderFieViewBtnDidClick:" target="Hz6-mo-xeY" id="VOR-Me-MdQ"/>
+                                    </connections>
+                                </button>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZkE-ly-G8C">
+                                    <rect key="frame" x="200" y="170" width="88" height="90"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KEU-uN-iSI" customClass="FspMeetingBtn" customModule="MeetingDemo" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="60" width="88" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="qpU-f4-uuS"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="bevel" title="平铺拉伸显示" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="ADq-5e-gwz">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="tileStrenchingBtnDidClick:" target="Hz6-mo-xeY" id="2xj-SU-Dn6"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z1w-Pe-Kww" customClass="FspMeetingBtn" customModule="MeetingDemo" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="30" width="88" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="k1H-wI-2ed"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="bevel" title="等比裁剪显示" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="bQ8-gd-Z1X">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="geometricRatioBtnDidClick:" target="Hz6-mo-xeY" id="Y3b-hx-rpR"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bTC-Uj-MHM" customClass="FspMeetingBtn" customModule="MeetingDemo" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
+                                            <buttonCell key="cell" type="bevel" title="等比完整显示" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="lUl-eJ-F9X">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="completeBtnDidClick:" target="Hz6-mo-xeY" id="ZGA-gh-v3T"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="90" id="2Q8-D2-VJa"/>
+                                        <constraint firstAttribute="trailing" secondItem="z1w-Pe-Kww" secondAttribute="trailing" id="5VG-62-ADh"/>
+                                        <constraint firstItem="z1w-Pe-Kww" firstAttribute="leading" secondItem="ZkE-ly-G8C" secondAttribute="leading" id="CSk-EY-vG3"/>
+                                        <constraint firstItem="bTC-Uj-MHM" firstAttribute="top" secondItem="z1w-Pe-Kww" secondAttribute="bottom" id="HZM-S9-BQM"/>
+                                        <constraint firstAttribute="trailing" secondItem="KEU-uN-iSI" secondAttribute="trailing" id="NT0-jD-PcE"/>
+                                        <constraint firstItem="KEU-uN-iSI" firstAttribute="top" secondItem="ZkE-ly-G8C" secondAttribute="top" id="cr4-sq-dhb"/>
+                                        <constraint firstAttribute="bottom" secondItem="bTC-Uj-MHM" secondAttribute="bottom" id="dxd-K2-beM"/>
+                                        <constraint firstAttribute="width" constant="88" id="mut-dx-iAA"/>
+                                        <constraint firstAttribute="trailing" secondItem="bTC-Uj-MHM" secondAttribute="trailing" id="t1s-ju-VhO"/>
+                                        <constraint firstItem="z1w-Pe-Kww" firstAttribute="top" secondItem="KEU-uN-iSI" secondAttribute="bottom" id="tpt-Iv-o5p"/>
+                                        <constraint firstItem="KEU-uN-iSI" firstAttribute="leading" secondItem="ZkE-ly-G8C" secondAttribute="leading" id="uAy-Nw-wB5"/>
+                                        <constraint firstItem="bTC-Uj-MHM" firstAttribute="leading" secondItem="ZkE-ly-G8C" secondAttribute="leading" id="yKG-PD-Y4T"/>
+                                    </constraints>
+                                </customView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="zDC-8N-POo" firstAttribute="top" secondItem="Se7-3r-3yI" secondAttribute="top" constant="16" id="6TC-Ck-bIN"/>
+                                <constraint firstItem="ZkE-ly-G8C" firstAttribute="top" secondItem="Se7-3r-3yI" secondAttribute="top" constant="16" id="89E-VW-IqB"/>
+                                <constraint firstItem="RPP-EB-1y1" firstAttribute="leading" secondItem="Se7-3r-3yI" secondAttribute="leading" constant="8" id="9Sf-e0-Pib"/>
+                                <constraint firstItem="rkJ-vg-AWP" firstAttribute="top" secondItem="Se7-3r-3yI" secondAttribute="top" constant="16" id="bXs-G0-2RF"/>
+                                <constraint firstAttribute="bottom" secondItem="RPP-EB-1y1" secondAttribute="bottom" constant="8" id="fSd-JJ-Zc4"/>
+                                <constraint firstAttribute="trailing" secondItem="rkJ-vg-AWP" secondAttribute="trailing" constant="8" id="hOf-OJ-r2f"/>
+                                <constraint firstItem="zDC-8N-POo" firstAttribute="leading" secondItem="Se7-3r-3yI" secondAttribute="leading" constant="8" id="siJ-O2-mCK"/>
+                                <constraint firstAttribute="trailing" secondItem="ZkE-ly-G8C" secondAttribute="trailing" constant="8" id="wn4-Dm-SEB"/>
+                            </constraints>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zgt-vS-9ev" userLabel="no video status view">
+                            <rect key="frame" x="0.0" y="0.0" width="296" height="276"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q9C-2c-3ra">
+                                    <rect key="frame" x="127" y="122" width="42" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="PQ7-UA-l1G"/>
+                                        <constraint firstAttribute="width" constant="42" id="bTr-Pj-Qie"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cam_img" id="Rmm-Kn-dRL"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a0m-U7-Mg4">
+                                    <rect key="frame" x="125" y="94" width="46" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="jq9-3o-NLn"/>
+                                        <constraint firstAttribute="width" constant="42" id="nec-fy-chM"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="无视频" id="Sg7-43-Hx8">
+                                        <font key="font" metaFont="system" size="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="q9C-2c-3ra" firstAttribute="centerY" secondItem="Zgt-vS-9ev" secondAttribute="centerY" id="B7a-rs-YTp"/>
+                                <constraint firstItem="q9C-2c-3ra" firstAttribute="centerX" secondItem="Zgt-vS-9ev" secondAttribute="centerX" id="Ogh-hg-Yei"/>
+                                <constraint firstItem="a0m-U7-Mg4" firstAttribute="centerX" secondItem="Zgt-vS-9ev" secondAttribute="centerX" id="oDw-dw-Km0"/>
+                                <constraint firstItem="a0m-U7-Mg4" firstAttribute="top" secondItem="q9C-2c-3ra" secondAttribute="bottom" constant="8" id="seu-hN-vMO"/>
+                            </constraints>
+                        </customView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Se7-3r-3yI" secondAttribute="bottom" id="06f-5F-QBj"/>
+                        <constraint firstAttribute="bottom" secondItem="Wke-2P-Esr" secondAttribute="bottom" id="0Dz-ts-JMz"/>
+                        <constraint firstItem="Se7-3r-3yI" firstAttribute="top" secondItem="Ptg-8i-UOn" secondAttribute="top" id="2Y5-0d-NQL"/>
+                        <constraint firstAttribute="trailing" secondItem="Wke-2P-Esr" secondAttribute="trailing" id="76D-Vt-Khh"/>
+                        <constraint firstItem="Se7-3r-3yI" firstAttribute="leading" secondItem="Ptg-8i-UOn" secondAttribute="leading" id="83c-K0-QEw"/>
+                        <constraint firstItem="Zgt-vS-9ev" firstAttribute="leading" secondItem="Ptg-8i-UOn" secondAttribute="leading" id="Bhb-aW-GmR"/>
+                        <constraint firstAttribute="trailing" secondItem="Zgt-vS-9ev" secondAttribute="trailing" id="G2C-s9-ibH"/>
+                        <constraint firstAttribute="trailing" secondItem="Se7-3r-3yI" secondAttribute="trailing" id="JHe-jO-myP"/>
+                        <constraint firstItem="Zgt-vS-9ev" firstAttribute="top" secondItem="Ptg-8i-UOn" secondAttribute="top" id="P9q-ks-BUH"/>
+                        <constraint firstItem="Wke-2P-Esr" firstAttribute="top" secondItem="Ptg-8i-UOn" secondAttribute="top" id="RV4-p0-8XH"/>
+                        <constraint firstItem="Wke-2P-Esr" firstAttribute="leading" secondItem="Ptg-8i-UOn" secondAttribute="leading" id="WIU-Wz-mxi"/>
+                        <constraint firstAttribute="bottom" secondItem="Zgt-vS-9ev" secondAttribute="bottom" id="bwb-CH-GWs"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Ptg-8i-UOn" secondAttribute="bottom" id="1p9-Ka-D15"/>
+                <constraint firstItem="Ptg-8i-UOn" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="I81-k6-eK3"/>
+                <constraint firstAttribute="trailing" secondItem="Ptg-8i-UOn" secondAttribute="trailing" id="kql-DF-kDu"/>
+                <constraint firstItem="Ptg-8i-UOn" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="sJO-tv-5C6"/>
+            </constraints>
+            <connections>
+                <outlet property="Btn" destination="rkJ-vg-AWP" id="t2Z-zx-qsn"/>
+                <outlet property="RenderFitBtn" destination="rkJ-vg-AWP" id="g8i-fh-WS8"/>
+                <outlet property="RenderFitView" destination="ZkE-ly-G8C" id="YdX-EQ-zcY"/>
+                <outlet property="Render_Complete_Btn" destination="bTC-Uj-MHM" id="hDY-Bb-o24"/>
+                <outlet property="Render_Geometric_Ratio_Cutting_Btn" destination="z1w-Pe-Kww" id="J8d-EG-Im6"/>
+                <outlet property="Render_Tile_Stretching_Btn" destination="KEU-uN-iSI" id="6kG-DS-bD8"/>
+                <outlet property="backView" destination="Ptg-8i-UOn" id="s5Z-kR-Xvm"/>
+                <outlet property="maskView" destination="Se7-3r-3yI" id="l18-tc-Ziu"/>
+                <outlet property="noVideoStatusView" destination="Zgt-vS-9ev" id="ZkO-q4-nUr"/>
+                <outlet property="renderView" destination="Wke-2P-Esr" id="58A-mF-GVf"/>
+                <outlet property="userid_text" destination="RGQ-yU-t1v" id="LXv-m3-fQs"/>
+                <outlet property="userid_view" destination="zDC-8N-POo" id="fJ0-Bn-Sp9"/>
+                <outlet property="videoStatusText" destination="HKn-Su-2oK" id="fvg-QF-nXc"/>
+                <outlet property="videoStatusView" destination="RPP-EB-1y1" id="llq-0i-qTJ"/>
+            </connections>
+            <point key="canvasLocation" x="-177" y="145"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="cam_img" width="48" height="48"/>
+        <image name="gengduo" width="24" height="24"/>
+        <image name="gengduo-3" width="24" height="24"/>
+    </resources>
+</document>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FspOnlineWindow" customModule="MeetingDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="_btn_meeting_Accept" destination="zUW-th-LIJ" id="ton-or-2et"/>
+                <outlet property="_btn_meeting_reject" destination="s9h-8v-wpA" id="zZ9-wV-4j6"/>
+                <outlet property="_recevie_invite_meeting_wnd" destination="RJH-FI-nQe" id="ebn-MA-s3E"/>
+                <outlet property="_text_meeting_description" destination="p0K-eF-jeY" id="ECl-Wf-O0d"/>
+                <outlet property="inputGroupTextField" destination="rRr-QK-EhN" id="tbt-BA-9Ag"/>
+                <outlet property="joinBtnDid" destination="C0S-LV-dCF" id="BGP-xS-BeF"/>
+                <outlet property="listTableView" destination="vTl-Nd-X8M" id="8Cp-pb-D9H"/>
+                <outlet property="searchInputTextFiled" destination="NIl-tZ-Iy4" id="FyX-oB-LKp"/>
+                <outlet property="topSelectView" destination="1uI-Mh-xxS" id="AdK-1o-xkA"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="在线" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="588" height="712"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="588" height="712"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rRr-QK-EhN">
+                        <rect key="frame" x="314" y="437" width="254" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="g3M-bd-3za"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="请输入分组id" bezelStyle="round" id="6db-Y7-FaO">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C0S-LV-dCF" customClass="FspStateButton">
+                        <rect key="frame" x="308" y="396" width="266" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="19Z-mR-YuX"/>
+                            <constraint firstAttribute="width" constant="254" id="HHw-yH-rHp"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="在线呼叫" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Lj-UR-0M3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onlineCallingBtnDidClick:" target="-2" id="RQ7-eu-7ub"/>
+                        </connections>
+                    </button>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7g-x5-YVJ">
+                        <rect key="frame" x="-1" y="-1" width="307" height="648"/>
+                        <clipView key="contentView" id="djj-hs-ZiP">
+                            <rect key="frame" x="1" y="1" width="305" height="646"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="vTl-Nd-X8M">
+                                    <rect key="frame" x="0.0" y="0.0" width="305" height="646"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn width="302" minWidth="40" maxWidth="1000" id="WAQ-Cl-8OB">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jSX-Wp-S8Y">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-2" id="wrQ-XB-0z1"/>
+                                        <outlet property="delegate" destination="-2" id="yzC-28-UuR"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="BgD-wo-7b9">
+                            <rect key="frame" x="-100" y="-100" width="223" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="gM3-o2-NiQ">
+                            <rect key="frame" x="-100" y="-100" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Mh-xxS">
+                        <rect key="frame" x="0.0" y="645" width="306" height="67"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-tZ-Iy4" customClass="FspInputTextField" customModule="MeetingDemo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="17" width="266" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="BjW-Ho-Usd"/>
+                                    <constraint firstAttribute="height" constant="30" id="w4a-fl-sSi"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="搜索..." bezelStyle="round" id="a8h-oD-Isj">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="jZu-wC-IaP"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="NIl-tZ-Iy4" firstAttribute="leading" secondItem="1uI-Mh-xxS" secondAttribute="leading" constant="20" id="2iB-PW-Eab"/>
+                            <constraint firstAttribute="height" constant="67" id="4i1-6b-iZN"/>
+                            <constraint firstAttribute="trailing" secondItem="NIl-tZ-Iy4" secondAttribute="trailing" constant="20" id="KlH-6V-oZK"/>
+                            <constraint firstItem="NIl-tZ-Iy4" firstAttribute="top" secondItem="1uI-Mh-xxS" secondAttribute="top" constant="20" id="OM5-Aw-7ut"/>
+                            <constraint firstAttribute="bottom" secondItem="NIl-tZ-Iy4" secondAttribute="bottom" constant="17" id="hhZ-LV-Enr"/>
+                        </constraints>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AmY-9L-q4Y">
+                        <rect key="frame" x="312" y="378" width="258" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="rfV-ks-Obi"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="你可以选择在线用户一起加入分组" id="Hnt-Yy-b53">
+                            <font key="font" metaFont="system" size="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.25039289043082019" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rRr-QK-EhN" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="243" id="1fN-Dh-DN1"/>
+                    <constraint firstAttribute="trailing" secondItem="rRr-QK-EhN" secondAttribute="trailing" constant="20" id="2Gg-sx-Omy"/>
+                    <constraint firstItem="rRr-QK-EhN" firstAttribute="leading" secondItem="v7g-x5-YVJ" secondAttribute="trailing" constant="8" id="3pQ-eL-FbX"/>
+                    <constraint firstItem="AmY-9L-q4Y" firstAttribute="leading" secondItem="v7g-x5-YVJ" secondAttribute="trailing" constant="8" id="4Ys-q3-auf"/>
+                    <constraint firstItem="1uI-Mh-xxS" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="AjB-6d-oex"/>
+                    <constraint firstItem="C0S-LV-dCF" firstAttribute="top" secondItem="rRr-QK-EhN" secondAttribute="bottom" constant="13" id="Aou-WI-ikV"/>
+                    <constraint firstItem="rRr-QK-EhN" firstAttribute="leading" secondItem="v7g-x5-YVJ" secondAttribute="trailing" constant="8" id="Bcd-2u-S3L"/>
+                    <constraint firstItem="1uI-Mh-xxS" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="K1W-yW-N4C"/>
+                    <constraint firstItem="v7g-x5-YVJ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="65" id="OvT-fc-nav"/>
+                    <constraint firstItem="AmY-9L-q4Y" firstAttribute="top" secondItem="C0S-LV-dCF" secondAttribute="bottom" constant="8" id="QAP-Xi-FOc"/>
+                    <constraint firstAttribute="bottom" secondItem="v7g-x5-YVJ" secondAttribute="bottom" constant="-1" id="UUF-aF-bA8"/>
+                    <constraint firstItem="AmY-9L-q4Y" firstAttribute="top" secondItem="C0S-LV-dCF" secondAttribute="bottom" constant="8" id="V7Q-sr-ucm"/>
+                    <constraint firstItem="C0S-LV-dCF" firstAttribute="leading" secondItem="AmY-9L-q4Y" secondAttribute="leading" id="VA0-qV-dm6"/>
+                    <constraint firstAttribute="trailing" secondItem="AmY-9L-q4Y" secondAttribute="trailing" constant="20" id="Wbd-19-UkB"/>
+                    <constraint firstItem="C0S-LV-dCF" firstAttribute="trailing" secondItem="rRr-QK-EhN" secondAttribute="trailing" id="h2o-AX-GdI"/>
+                    <constraint firstItem="C0S-LV-dCF" firstAttribute="trailing" secondItem="AmY-9L-q4Y" secondAttribute="trailing" id="nGu-hh-rbf"/>
+                    <constraint firstItem="v7g-x5-YVJ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="t1X-u5-Z2l"/>
+                    <constraint firstAttribute="trailing" secondItem="1uI-Mh-xxS" secondAttribute="trailing" constant="282" id="wYn-Kt-RF4"/>
+                    <constraint firstItem="C0S-LV-dCF" firstAttribute="leading" secondItem="rRr-QK-EhN" secondAttribute="leading" id="yZ6-wa-m6x"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="-678" y="-544"/>
+        </window>
+        <window title="提示" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="RJH-FI-nQe">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="199" width="451" height="130"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <value key="minSize" type="size" width="451" height="130"/>
+            <value key="maxSize" type="size" width="451" height="130"/>
+            <view key="contentView" id="s8m-il-McC">
+                <rect key="frame" x="0.0" y="0.0" width="451" height="130"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p0K-eF-jeY">
+                        <rect key="frame" x="8" y="101" width="435" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="34" id="LTW-dg-7jN"/>
+                            <constraint firstAttribute="width" constant="431" id="LYD-Px-hel"/>
+                        </constraints>
+                        <textFieldCell key="cell" alignment="center" title="收到用户:85538528858584988的与会邀请！邀请id:13群组id:998!" id="N8W-n3-RgO">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-8v-wpA" customClass="FspStateButton">
+                        <rect key="frame" x="54" y="13" width="100" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="拒绝" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nbd-pq-Rk0">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="_btn_reject_click:" target="-2" id="sGz-IP-Mb2"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUW-th-LIJ" customClass="FspStateButton">
+                        <rect key="frame" x="311" y="13" width="100" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="接受" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zNp-kS-8Ud">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="_btn_accpet_click:" target="-2" id="9yt-2y-VhR"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="p0K-eF-jeY" firstAttribute="leading" secondItem="s8m-il-McC" secondAttribute="leading" constant="10" id="CuR-MR-nF6"/>
+                    <constraint firstAttribute="trailing" secondItem="p0K-eF-jeY" secondAttribute="trailing" constant="10" id="EjN-IU-znc"/>
+                    <constraint firstItem="p0K-eF-jeY" firstAttribute="top" secondItem="s8m-il-McC" secondAttribute="top" constant="12" id="LDn-Bg-HS4"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-746" y="-1060"/>
+        </window>
+    </objects>
+</document>

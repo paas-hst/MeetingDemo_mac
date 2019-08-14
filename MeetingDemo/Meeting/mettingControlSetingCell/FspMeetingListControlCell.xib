@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FspMeetingListControlCell" customModule="MeetingDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="bgView" destination="dIe-hW-h4J" id="FIF-ae-D09"/>
+                <outlet property="cellImageIcon" destination="ytz-jM-HcX" id="N7D-kH-fRr"/>
+                <outlet property="cellMuteBtn" destination="fZw-7O-suP" id="Obm-gh-iTg"/>
+                <outlet property="cellScreenShareBtn" destination="xDU-bk-flm" id="TZT-KL-VDb"/>
+                <outlet property="cellUserIdText" destination="faF-eT-QWj" id="BAa-XN-UYP"/>
+                <outlet property="cellVideoBtn" destination="M3m-xq-ePB" id="c6C-Z7-sIn"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="MeetingListControlCell" id="c22-O7-iKe" customClass="FspMeetingListControlCell" customModule="MeetingDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="dIe-hW-h4J">
+                    <rect key="frame" x="0.0" y="0.0" width="302" height="59"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-jM-HcX" userLabel="cellChooseImage">
+                            <rect key="frame" x="20" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="AV2-NJ-c2i"/>
+                                <constraint firstAttribute="width" constant="24" id="fd1-Av-Xfc"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="bD9-D3-KKc"/>
+                            <connections>
+                                <action selector="cellChooseImage:" target="-1" id="8wb-ID-zkq"/>
+                            </connections>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faF-eT-QWj">
+                            <rect key="frame" x="69" y="21" width="64" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="X0Y-eW-wHT"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="2342323" id="aBV-KJ-g0x">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-7O-suP" customClass="FspMeetingControlBtn" customModule="MeetingDemo" customModuleProvider="target">
+                            <rect key="frame" x="170" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="OYL-54-js4"/>
+                                <constraint firstAttribute="width" constant="24" id="otP-lb-TjX"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="group_mic_not_selected" imagePosition="overlaps" alignment="center" alternateImage="group_mic_selected" imageScaling="proportionallyDown" inset="2" id="HOh-nm-ZXy">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="cellMuteBtnDidClick:" target="-2" id="Pa4-kg-6Nq"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3m-xq-ePB" customClass="FspMeetingControlBtn" customModule="MeetingDemo" customModuleProvider="target">
+                            <rect key="frame" x="258" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="QvQ-XD-Kir"/>
+                                <constraint firstAttribute="height" constant="24" id="phk-Wj-NxU"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="group_cam_not_selected" imagePosition="overlaps" alignment="center" alternateImage="group_cam_selected" state="on" imageScaling="proportionallyDown" inset="2" id="wI7-3J-iw6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="cellVideoBtnDidClick:" target="-2" id="kEQ-z1-EWw"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xDU-bk-flm" customClass="FspMeetingControlBtn" customModule="MeetingDemo" customModuleProvider="target">
+                            <rect key="frame" x="214" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="Ll7-D9-bGN"/>
+                                <constraint firstAttribute="width" constant="24" id="Nog-T7-dAS"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="group_share_not_selected" imagePosition="overlaps" alignment="center" alternateImage="group_share_selected" state="on" imageScaling="proportionallyDown" inset="2" id="1km-SC-c8R">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="cellScreenShareBtnDidClick:" target="-2" id="Yb3-m2-NbX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fZw-7O-suP" firstAttribute="centerY" secondItem="dIe-hW-h4J" secondAttribute="centerY" id="8lc-eC-cBd"/>
+                        <constraint firstItem="ytz-jM-HcX" firstAttribute="leading" secondItem="dIe-hW-h4J" secondAttribute="leading" constant="20" id="G8t-eN-Fud"/>
+                        <constraint firstItem="ytz-jM-HcX" firstAttribute="centerY" secondItem="dIe-hW-h4J" secondAttribute="centerY" id="RfZ-nR-z4k"/>
+                        <constraint firstAttribute="trailing" secondItem="M3m-xq-ePB" secondAttribute="trailing" constant="20" id="Wvp-0e-m4P"/>
+                        <constraint firstItem="M3m-xq-ePB" firstAttribute="centerY" secondItem="dIe-hW-h4J" secondAttribute="centerY" id="bXJ-sO-xSA"/>
+                        <constraint firstItem="faF-eT-QWj" firstAttribute="leading" secondItem="ytz-jM-HcX" secondAttribute="trailing" constant="27" id="cla-Sv-Nik"/>
+                        <constraint firstItem="xDU-bk-flm" firstAttribute="centerY" secondItem="dIe-hW-h4J" secondAttribute="centerY" id="oUk-os-kFt"/>
+                        <constraint firstItem="faF-eT-QWj" firstAttribute="centerY" secondItem="dIe-hW-h4J" secondAttribute="centerY" id="oXu-oS-AAi"/>
+                        <constraint firstItem="xDU-bk-flm" firstAttribute="leading" secondItem="fZw-7O-suP" secondAttribute="trailing" constant="20" id="zdd-HJ-Xnj"/>
+                        <constraint firstItem="M3m-xq-ePB" firstAttribute="leading" secondItem="xDU-bk-flm" secondAttribute="trailing" constant="20" id="zze-hI-3vN"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dIe-hW-h4J" secondAttribute="bottom" id="5oa-Fv-ntn"/>
+                <constraint firstItem="dIe-hW-h4J" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="MAu-Jz-aVc"/>
+                <constraint firstAttribute="trailing" secondItem="dIe-hW-h4J" secondAttribute="trailing" id="hfG-cS-FFB"/>
+                <constraint firstItem="dIe-hW-h4J" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="u0n-DG-UEZ"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="dIe-hW-h4J" id="4uP-Z6-FFP"/>
+                <outlet property="cellImageIcon" destination="ytz-jM-HcX" id="eaU-tm-vNN"/>
+                <outlet property="cellMuteBtn" destination="fZw-7O-suP" id="KXb-Rf-k8n"/>
+                <outlet property="cellScreenShareBtn" destination="xDU-bk-flm" id="cSc-ky-94V"/>
+                <outlet property="cellUserIdText" destination="faF-eT-QWj" id="ZOi-CS-Xzc"/>
+                <outlet property="cellVideoBtn" destination="M3m-xq-ePB" id="UwX-G0-ufZ"/>
+            </connections>
+            <point key="canvasLocation" x="-160" y="44.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="group_cam_not_selected" width="24" height="24"/>
+        <image name="group_cam_selected" width="24" height="24"/>
+        <image name="group_mic_not_selected" width="24" height="24"/>
+        <image name="group_mic_selected" width="24" height="24"/>
+        <image name="group_share_not_selected" width="128" height="128"/>
+        <image name="group_share_selected" width="24" height="24"/>
+    </resources>
+</document>

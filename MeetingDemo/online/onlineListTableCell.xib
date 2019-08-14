@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="onlineListTableCell" customModule="MeetingDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="CellStatusView" destination="IxM-uq-Iee" id="yQ5-Q1-SnY"/>
+                <outlet property="cellChooseImage" destination="Od8-vm-BfU" id="neS-E5-hzW"/>
+                <outlet property="cellImageIcon" destination="Isj-WD-hTB" id="Ws3-k8-s4c"/>
+                <outlet property="cellTextLabel" destination="g2V-rU-yYW" id="Wrn-Wu-Xa7"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView identifier="CustomCell" id="684-Nk-pFT" customClass="onlineListTableCell" customModule="MeetingDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Od8-vm-BfU" userLabel="cellChooseImage">
+                    <rect key="frame" x="16" y="23" width="14" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="7Ar-7S-qU6"/>
+                        <constraint firstAttribute="height" constant="14" id="nBb-2f-HFa"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="PNZ-pK-mSy"/>
+                    <connections>
+                        <action selector="cellChooseImage:" target="-1" id="7wO-iI-OnS"/>
+                    </connections>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Isj-WD-hTB" userLabel="cellImageIcon">
+                    <rect key="frame" x="38" y="18" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="7kF-HR-TRI"/>
+                        <constraint firstAttribute="height" constant="24" id="Evj-KU-gj5"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="v67-kO-B6n"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g2V-rU-yYW">
+                    <rect key="frame" x="68" y="21" width="96" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Izx-gj-wUf"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="w0U-Du-0jB">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1YT-40-c3j">
+                    <rect key="frame" x="268" y="21" width="31" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Pgh-uF-zc8"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="在线" id="H2E-x9-j8a">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="IxM-uq-Iee">
+                    <rect key="frame" x="259" y="26" width="8" height="8"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="gky-7a-ZrG"/>
+                        <constraint firstAttribute="width" constant="8" id="rwY-hn-Ahx"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1YT-40-c3j" firstAttribute="leading" secondItem="IxM-uq-Iee" secondAttribute="trailing" constant="3" id="04g-on-oLP"/>
+                <constraint firstItem="Od8-vm-BfU" firstAttribute="top" secondItem="684-Nk-pFT" secondAttribute="top" constant="23" id="65W-9q-JI1"/>
+                <constraint firstAttribute="trailing" secondItem="1YT-40-c3j" secondAttribute="trailing" constant="3" id="Aa5-Xl-fGr"/>
+                <constraint firstItem="Isj-WD-hTB" firstAttribute="top" secondItem="684-Nk-pFT" secondAttribute="top" constant="18" id="DR4-uO-Pd0"/>
+                <constraint firstItem="Od8-vm-BfU" firstAttribute="leading" secondItem="684-Nk-pFT" secondAttribute="leading" constant="16" id="HAQ-lH-BaX"/>
+                <constraint firstItem="g2V-rU-yYW" firstAttribute="top" secondItem="684-Nk-pFT" secondAttribute="top" constant="22" id="PLh-8n-WNv"/>
+                <constraint firstItem="Isj-WD-hTB" firstAttribute="leading" secondItem="Od8-vm-BfU" secondAttribute="trailing" constant="8" id="V0A-in-QUu"/>
+                <constraint firstItem="1YT-40-c3j" firstAttribute="top" secondItem="684-Nk-pFT" secondAttribute="top" constant="22" id="WM8-O0-hsH"/>
+                <constraint firstItem="IxM-uq-Iee" firstAttribute="centerY" secondItem="684-Nk-pFT" secondAttribute="centerY" id="aGF-0E-MO0"/>
+                <constraint firstAttribute="bottom" secondItem="g2V-rU-yYW" secondAttribute="bottom" constant="21" id="ac8-zd-WOH"/>
+                <constraint firstAttribute="bottom" secondItem="1YT-40-c3j" secondAttribute="bottom" constant="21" id="dzt-Rr-7tF"/>
+                <constraint firstAttribute="bottom" secondItem="Isj-WD-hTB" secondAttribute="bottom" constant="18" id="eQD-20-Ztg"/>
+                <constraint firstAttribute="bottom" secondItem="Od8-vm-BfU" secondAttribute="bottom" constant="23" id="ulh-50-kJ6"/>
+                <constraint firstItem="g2V-rU-yYW" firstAttribute="leading" secondItem="Isj-WD-hTB" secondAttribute="trailing" constant="8" id="yWQ-dA-SbK"/>
+            </constraints>
+            <connections>
+                <outlet property="CellStatusView" destination="IxM-uq-Iee" id="Oqb-x8-Vg9"/>
+                <outlet property="cellChooseImage" destination="Od8-vm-BfU" id="U8Y-11-hur"/>
+                <outlet property="cellImageIcon" destination="Isj-WD-hTB" id="UiE-Uj-w9w"/>
+                <outlet property="cellTextLabel" destination="g2V-rU-yYW" id="BXn-ys-0r0"/>
+            </connections>
+            <point key="canvasLocation" x="-55" y="28"/>
+        </tableCellView>
+        <customObject id="JM8-HU-kl7" customClass="onlineListTableCell" customModule="MeetingDemo" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
+</document>
