@@ -1,7 +1,104 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
+#import <FspKit/FspCommon.h>
 #import <FspKit/FspSignaling.h>
+
+
+//官方保留的videoid,代表特定类型的广播，广播时不能取这些值
+/**
+ * @brief 屏幕共享
+ */
+extern NSString * _Nonnull const FSP_RESERVED_VIDEOID_SCREENSHARE;
+
+
+/**
+ * 视频显示缩放模式
+ */
+typedef NS_ENUM(NSInteger, FspRenderMode) {
+    FSP_RENDERMODE_SCALE_FILL = 1, ///<缩放平铺
+    FSP_RENDERMODE_CROP_FILL = 2,  ///<等比裁剪显示
+    FSP_RENDERMODE_FIT_CENTER = 3 ///<等比居中显示
+};
+
+static const NSInteger FSP_INVALID_CAMERA_ID = -1; ///<未定义cameraid
+static const NSInteger FSP_INVALID_DEVICE_ID = -1; ///<未定义deviceid
+
+
+/**
+ * @brief 视频设备信息
+ */
+@interface FspVideoDeviceInfo : NSObject
+@property (assign, nonatomic) NSInteger cameraId; ///<摄像头id
+@property (copy, nonatomic) NSString* _Nullable deviceName; ///<设备名
+@end
+
+
+/**
+ * @brief 音频设备信息
+ */
+@interface FspAudioDeviceInfo : NSObject
+@property (assign, nonatomic) NSInteger deviceId; ///<音频设备id
+@property (copy, nonatomic) NSString* _Nullable deviceName; ///<设备名
+@end
+
+
+/**
+ * 视频统计信息
+ */
+@interface FspVideoStatsInfo : NSObject
+@property (assign, nonatomic) NSInteger width; ///<视频宽,像素
+@property (assign, nonatomic) NSInteger height; ///<视频高，像素
+@property (assign, nonatomic) NSInteger framerate; ///<帧率
+@property (assign, nonatomic) NSInteger bitrate; ///<码率
+@end
+
+
+/**
+ * 本地视频profile信息
+ */
+@interface FspVideoProfile : NSObject
+@property (assign, nonatomic) NSInteger width; ///<视频宽,像素
+@property (assign, nonatomic) NSInteger height; ///<视频高，像素
+@property (assign, nonatomic) NSInteger framerate; ///<帧率
+
+
+/**
+ * 通过width, height, framerate构造profile
+ */
++ (FspVideoProfile* _Nullable)profileWith:(NSInteger)width height:(NSInteger)height framerate:(NSInteger)framerate;
+@end
+
+
+/**
+ * fspEvent事件类型
+ */
+typedef NS_ENUM(NSInteger, FspEventType) {
+    FSP_EVENT_JOINGROUP = 0,          ///<加入组结果
+    FSP_EVENT_CONNECT_LOST = 1,       ///<与fsp服务的连接断开，应用层需要去重新加入组
+    FSP_EVENT_RECONNECT_START = 2,    ///<网络断开过，开始重连
+    FSP_EVENT_LOGIN_RESULT = 3        ///<登录结果
+};
+
+
+/**
+ * 远端视频事件类型
+ */
+typedef NS_ENUM(NSInteger, FspRemoteVideoEvent) {
+    FSP_REMOTE_VIDEO_PUBLISH_STARTED = 0,  ///<远端广播了一路视频
+    FSP_REMOTE_VIDEO_PUBLISH_STOPED = 1,   ///<远端停止广播视频
+    FSP_REMOTE_VIDEO_FIRST_RENDERED = 2    ///<远端视频第一次显示，加载完成的事件
+};
+
+
+/**
+ * 远端音频事件类型
+ */
+typedef NS_ENUM(NSInteger, FspRemoteAudioEvent) {
+    FSP_REMOTE_AUDIO_EVENT_PUBLISHED = 0,     ///<远端用户广播了音频
+    FSP_REMOTE_AUDIO_EVENT_PUBLISH_STOPED = 1 ///<远端用户停止了广播音频
+};
+
 
 /**
  * sdk回调事件和异步结果
@@ -60,8 +157,38 @@
  */
 + (NSString* _Nonnull) getVersionInfo;
 
-#pragma mark Video method
+/**
+ *@brief 登入
+ *@param nToken 访问fsp的令牌，令牌的获取参考fsp鉴权
+ *@param nUserId 自身的userId
+ *@return 结果错误码
+ */
+- (FspErrCode)login:(NSString * _Nonnull)nToken userId:(NSString * _Nonnull)nUserId;
 
+/**
+ *@brief 登出
+ *@return 结果错误码
+ */
+- (FspErrCode)loginOut;
+
+/**
+ *@param nGroupId 加入组的group Id
+ *@return  结果错误码
+ */
+- (FspErrCode)joinGroup:(NSString *_Nonnull)nGroupId;
+
+/**
+ * @brief 退出组
+ */
+- (FspErrCode)leaveGroup;
+
+/**
+ *@brief 销毁
+ */
+- (FspErrCode)destoryFsp;
+
+
+#pragma mark Video method
 /**
  * @brief 视频设备列表
  */

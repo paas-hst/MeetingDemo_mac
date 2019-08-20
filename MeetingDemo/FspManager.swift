@@ -142,7 +142,7 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     }
     
     //MARK:信令回调
-    func refreshUserStatusFinished(_ errCode: FspErrCode, requestId nRequestId: UInt32, usrInfo nUsrInfos: NSMutableArray) {
+    func refreshUserStatusFinished(_ errCode: FspErrCode, requestId nRequestId: UInt32, userInfo nUsrInfos: NSMutableArray){
         if NSApp.keyWindow == nil {
             return
         }
@@ -438,7 +438,7 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     
     
     func sendUsrMsg(nUserId: String!, nMsg: String!, nMsgId: UnsafeMutablePointer<UInt32>!) -> FspErrCode {
-        return self.fsp_engine!.sendUsrMsg(nUserId, msg: nMsg, msgId: nMsgId);
+        return self.fsp_engine!.sendUserMsg(nUserId, msg: nMsg, msgId: nMsgId);
     }
     
     func sendGroupMsg(nMsg: String!, nMsgId: UnsafeMutablePointer<UInt32>!) -> FspErrCode {

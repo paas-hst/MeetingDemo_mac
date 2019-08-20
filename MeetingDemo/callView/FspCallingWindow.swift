@@ -142,15 +142,15 @@ class FspCallingWindow: FspWindowVC, NSTableViewDelegate,NSTableViewDataSource,N
             let minArr = NSMutableArray()
             var isFind = false
             for model in dataSourceArr {
-                let newModel = model as! FspUsrInfo
+                let newModel = model as! FspUserInfo
                 for fs in weakself!.listDataSourceArr {
                     let oldModel = fs as! listStatusModel
                     if oldModel.user_id == newModel.userId{
                         //老模型里面有新的模型，则保存
                         let model = listStatusModel()
-                        if newModel.userStatus == FspUsrStatus.FSP_USR_STATUS_ONLINE{
+                        if newModel.userStatus == FspUserStatus.FSP_USER_STATUS_ONLINE{
                             model.is_online = 1
-                        }else if newModel.userStatus == FspUsrStatus.FSP_USR_STATUS_OFFLINE{
+                        }else if newModel.userStatus == FspUserStatus.FSP_USER_STATUS_OFFLINE{
                             model.is_online = 0
                         }
                         model.is_selected = oldModel.is_selected
@@ -168,9 +168,9 @@ class FspCallingWindow: FspWindowVC, NSTableViewDelegate,NSTableViewDataSource,N
                 if isFind == false{
                     //老模型里面没有新的模型，则直接添加新的
                     let model = listStatusModel()
-                    if newModel.userStatus == FspUsrStatus.FSP_USR_STATUS_ONLINE{
+                    if newModel.userStatus == FspUserStatus.FSP_USER_STATUS_ONLINE{
                         model.is_online = 1
-                    }else if newModel.userStatus == FspUsrStatus.FSP_USR_STATUS_OFFLINE{
+                    }else if newModel.userStatus == FspUserStatus.FSP_USER_STATUS_OFFLINE{
                         model.is_online = 0
                     }
                     model.is_selected = false
