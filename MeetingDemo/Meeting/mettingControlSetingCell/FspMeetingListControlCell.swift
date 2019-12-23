@@ -46,13 +46,13 @@ class FspMeetingListControlCell: NSTableCellView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.cellImageIcon.image = NSImage(named: "Group")
-        self.cellMuteBtn.setImageForNormal(image: NSImage(named: "group_mic_not_selected")!)
-        self.cellMuteBtn.setImageForSelected(image: NSImage(named: "group_mic_selected")!)
-        self.cellVideoBtn.setImageForNormal(image: NSImage(named: "group_cam_not_selected")!)
-        self.cellVideoBtn.setImageForSelected(image: NSImage(named: "group_cam_selected")!)
-        self.cellScreenShareBtn.setImageForNormal(image: NSImage(named: "group_share_not_selected")!)
-        self.cellScreenShareBtn.setImageForSelected(image: NSImage(named: "group_share_selected")!)
+        self.cellImageIcon.image = NSImage(named: NSImage.Name("Group"))
+        self.cellMuteBtn.setImageForNormal(image: NSImage(named: NSImage.Name("group_mic_not_selected"))!)
+        self.cellMuteBtn.setImageForSelected(image: NSImage(named: NSImage.Name("group_mic_selected"))!)
+        self.cellVideoBtn.setImageForNormal(image: NSImage(named: NSImage.Name("group_cam_not_selected"))!)
+        self.cellVideoBtn.setImageForSelected(image: NSImage(named: NSImage.Name("group_cam_selected"))!)
+        self.cellScreenShareBtn.setImageForNormal(image: NSImage(named: NSImage.Name("group_share_not_selected"))!)
+        self.cellScreenShareBtn.setImageForSelected(image: NSImage(named: NSImage.Name("group_share_selected"))!)
         
         self.cellMuteBtn.isSelected = false
         self.cellVideoBtn.isSelected = false
@@ -60,7 +60,7 @@ class FspMeetingListControlCell: NSTableCellView {
     }
     
     @IBAction func cellMuteBtnDidClick(_ sender: Any) {
-        self.cellMuteBtn!.isSelected = !self.cellMuteBtn!.isSelected
+        //self.cellMuteBtn!.isSelected = !self.cellMuteBtn!.isSelected
         if self.cellMuteBtn!.isSelected == true {
             print("麦克风开启")
         }else{
@@ -68,7 +68,7 @@ class FspMeetingListControlCell: NSTableCellView {
         }
     }
     @IBAction func cellVideoBtnDidClick(_ sender: Any) {
-        self.cellVideoBtn!.isSelected = !self.cellVideoBtn!.isSelected
+       // self.cellVideoBtn!.isSelected = !self.cellVideoBtn!.isSelected
         if self.cellVideoBtn!.isSelected == true {
             print("视频开启")
         }else{
@@ -76,7 +76,7 @@ class FspMeetingListControlCell: NSTableCellView {
         }
     }
     @IBAction func cellScreenShareBtnDidClick(_ sender: Any) {
-        self.cellScreenShareBtn!.isSelected = !self.cellScreenShareBtn!.isSelected
+       // self.cellScreenShareBtn!.isSelected = !self.cellScreenShareBtn!.isSelected
         if self.cellScreenShareBtn!.isSelected == true {
             print("屏幕共享开启")
         }else{

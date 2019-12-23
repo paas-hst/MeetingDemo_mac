@@ -169,7 +169,7 @@ class FspCollectionViewCell: NSView {
     
     
     func loadNibView() -> Void {
-        Bundle.main.loadNibNamed("FspCollectionViewCell", owner: self, topLevelObjects: nil)
+        Bundle.main.loadNibNamed(NSNib.Name("FspCollectionViewCell"), owner: self, topLevelObjects: nil)
         
     }
     

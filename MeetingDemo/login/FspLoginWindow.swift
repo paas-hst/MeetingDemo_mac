@@ -46,9 +46,9 @@ class FspLoginWindow: FspWindowVC {
         load_view.frame = frame
         self.window?.contentView?.addSubview(load_view)
         
-        self.loginBtn.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.loginBtn.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         
-        self.settingsBtn.setImages(NSImage.init(named: "login_set"), hot: NSImage.init(named: "login_set"), press: NSImage.init(named: "login_set"), disable: NSImage.init(named: "login_set"))
+        self.settingsBtn.setImages(NSImage.init(named: NSImage.Name("login_set")), hot: NSImage.init(named: NSImage.Name("login_set")), press: NSImage.init(named: NSImage.Name("login_set")), disable: NSImage.init(named: NSImage.Name("login_set")))
         
         /*
         self.checkAudioStatus()
@@ -118,7 +118,6 @@ class FspLoginWindow: FspWindowVC {
                     print("相机不准许")
                     self.isCameraCanUse = false
                 }
-                
             }
         } else {
             // Fallback on earlier versions
@@ -221,7 +220,7 @@ class FspLoginWindow: FspWindowVC {
     }
     
     @IBAction func SettingsBtnDidClick(_ sender: Any) {
-        let settingWindow = FspSettingsWindow(windowNibName: "FspSettingsWindow")
+        let settingWindow = FspSettingsWindow(windowNibName: NSNib.Name("FspSettingsWindow"))
         NSApplication.shared.runModal(for: settingWindow.window!)
     }
 }

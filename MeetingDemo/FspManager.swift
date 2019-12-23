@@ -46,7 +46,7 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
         }
         
     }
-    
+
     func onGroupUserJoined(_ userId: String) {
         print(userId,"进入会议室！")
         DispatchQueue.main.async {
@@ -72,6 +72,17 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
             attendeeModel.useId = userId
             curGroupUsers.append(attendeeModel)
         }
+        DispatchQueue.main.sync {
+            if self.cur_window != nil {
+                if self.cur_window!.isKind(of: FspMeetingVC.self) {
+                    (self.cur_window as! FspMeetingVC).refreashListTableSignal.sendNext(nil)
+                }
+            }
+        }
+    }
+    
+    func onUserStatusChanged(_ remoteUserId: String, newStatus nNewStatus: FspUserStatus){
+        print(remoteUserId,"change！")
     }
     
     func onReceiveUserMsg(_ nSrcUserId: String, msg nMsg: String, msgId nMsgId: Int32) {
@@ -143,16 +154,51 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     
     //MARK:信令回调
     func refreshUserStatusFinished(_ errCode: FspErrCode, requestId nRequestId: UInt32, userInfo nUsrInfos: NSMutableArray){
-        if NSApp.keyWindow == nil {
-            return
+        
+        var ret = false
+        if Thread.isMainThread {
+            if NSApp.keyWindow == nil {
+                ret = true
+            }
+            if NSApp.keyWindow?.windowController == nil {
+                ret = true
+            }
+            
+            if ret == true {
+                return
+            }
+            
+            if (NSApp.keyWindow?.windowController! .isKind(of: FspWindowVC.self))! {
+                 let vc = NSApp.keyWindow?.windowController as! FspWindowVC
+                 vc.updateListTableView(dataSourceArr: nUsrInfos)
+             }
+            
+        }else{
+            DispatchQueue.main.sync {
+                if NSApp.keyWindow == nil {
+                    ret = true
+                }
+                if NSApp.keyWindow?.windowController == nil {
+                    ret = true
+                }
+                
+                if ret == false {
+                   if (NSApp.keyWindow?.windowController! .isKind(of: FspWindowVC.self))!
+                   {
+                       let vc = NSApp.keyWindow?.windowController as! FspWindowVC
+                       vc.updateListTableView(dataSourceArr: nUsrInfos)
+                   }
+                }
+                    
+       
+            }
+            
+   
         }
-        if NSApp.keyWindow?.windowController == nil {
-            return
-        }
-        if (NSApp.keyWindow?.windowController! .isKind(of: FspWindowVC.self))! {
-            let vc = NSApp.keyWindow?.windowController as! FspWindowVC
-            vc.updateListTableView(dataSourceArr: nUsrInfos)
-        }
+        
+
+        
+ 
     }
     
     func onInviteIncome(_ nInviteUsrId: String, inviteId nInviteId: Int32, groupId nGroupId: String, msg nMsg: String?) {
@@ -185,8 +231,16 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     
     //MARK: 跳转窗口
     func switchToMainView() -> Void {
-        let delegate:AppDelegate = NSApp!.delegate as! AppDelegate
-        delegate.switchToMainView()
+        if Thread.isMainThread {
+            let delegate:AppDelegate = NSApp!.delegate as! AppDelegate
+            delegate.switchToMainView()
+        }else{
+            DispatchQueue.main.sync {
+                let delegate:AppDelegate = NSApp!.delegate as! AppDelegate
+                delegate.switchToMainView()
+            }
+        }
+
     }
     
     func alertMessage(message: String) -> Void {
@@ -236,7 +290,7 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     var call_userIds = Array<String>()
     
     //MARK: fsp引擎
-    private var fsp_engine: FspEngine?
+    var fsp_engine: FspEngine?
     //MARK: 初始化
     static let manager = FspManager()
     override init() {
@@ -284,31 +338,36 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     
     func initFsp() -> FspErrCode {
         
-        var strAppId: String? = ""
-        var strSecretKey: String? = ""
-        var strServerAddr: String? = ""
+        var strAppId: String = ""
+        var strSecretKey: String = ""
+        var strServerAddr: String = ""
         
         let documents = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentationDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let document = documents[0]
         let userDefaults = UserDefaults.standard
         let useConfigVal = userDefaults.bool(forKey: CONFIG_KEY_USECONFIG)
         if useConfigVal == true {
-            strAppId = userDefaults.string(forKey: CONFIG_KEY_APPID)!
-            strSecretKey = userDefaults.string(forKey: CONFIG_KEY_SECRECTKEY)!
-            strServerAddr = userDefaults.string(forKey: CONFIG_KEY_SERVETADDR)!
+            strAppId = userDefaults.string(forKey: CONFIG_KEY_APPID) ?? ""
+            strSecretKey = userDefaults.string(forKey: CONFIG_KEY_SECRECTKEY) ?? ""
+            strServerAddr = userDefaults.string(forKey: CONFIG_KEY_SERVETADDR) ?? ""
         }else{
             strAppId = AppId
             strSecretKey = SecretKey
             strServerAddr = ServerAddr
         }
         
-        if strAppId == nil || strSecretKey == nil || strServerAddr == nil {
-            strAppId = AppId
-            strSecretKey = SecretKey
-            strServerAddr  = ServerAddr
+        if (strAppId.count <= 0 || strSecretKey.count <= 0) {
+            return FspErrCode.FSP_ERR_FAIL
         }
         
-        self.fsp_engine = FspEngine.sharedEngine(withAppId: strAppId!, logPath: document, serverAddr: strServerAddr, delegate: self)
+        
+        SecretKey = strSecretKey
+        AppId = strAppId
+        ServerAddr = strServerAddr
+        
+        print(useConfigVal)
+        print(strAppId,strSecretKey,strServerAddr)
+        self.fsp_engine = FspEngine.sharedEngine(withAppId: strAppId, logPath: document, serverAddr: strServerAddr, delegate: self)
         if self.fsp_engine == nil {
             return FspErrCode.FSP_ERR_FAIL
         }
@@ -369,7 +428,6 @@ class FspManager: NSObject,FspEngineDelegate,FspEngineSignalingDelegate,FspEngin
     
     func getMicrophoneVolume() -> Int {
         return self.fsp_engine!.getMicrophoneVolume()
-        
     }
     
     func setCurrentMicrophoneDevice(nDeviceId: Int) -> Int {

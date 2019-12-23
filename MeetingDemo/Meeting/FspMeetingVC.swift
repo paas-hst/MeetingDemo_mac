@@ -15,7 +15,7 @@ extension NSView {
         
         var arrayWithObjects: NSArray?
         
-        let nibLoaded = Bundle.main.loadNibNamed(nibName, owner: owner, topLevelObjects: &arrayWithObjects)
+        let nibLoaded = Bundle.main.loadNibNamed(NSNib.Name(nibName), owner: owner, topLevelObjects: &arrayWithObjects)
         
         if nibLoaded {
             guard let unwrappedObjectArray = arrayWithObjects else { return nil }
@@ -64,6 +64,27 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
     
     func remoteVideoEvent(_ userId: String, videoId: String, eventType: FspRemoteVideoEvent) {
         print("收到远端视频")
+        
+        let attendeeModel = self.getAttendeeModelWithUrsId(userId: userId)
+         if attendeeModel != nil {
+            if videoId == FSP_RESERVED_VIDEOID_SCREENSHARE {
+                //桌面共享
+                if eventType == .FSP_REMOTE_VIDEO_PUBLISH_STARTED {
+                    attendeeModel!.isScreenShareOpen = true
+                }else if eventType == .FSP_REMOTE_VIDEO_PUBLISH_STOPED{
+                    attendeeModel!.isScreenShareOpen = false
+                }
+            }else{
+                //视频
+                if eventType == .FSP_REMOTE_VIDEO_PUBLISH_STARTED {
+                    attendeeModel!.isCameraOpen = true
+                }else if eventType == .FSP_REMOTE_VIDEO_PUBLISH_STOPED{
+                    attendeeModel!.isCameraOpen = false
+                }
+            }
+             self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
+         }
+        
         DispatchQueue.main.async {
 
             let cell = self.getFreeCell(user_id: userId,video_id: videoId)
@@ -109,8 +130,57 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
         }
     }
     
+    //查找相应的在线列表模型
+    func getAttendeeModelWithUrsId(userId: String!) -> listStatusModel? {
+        var attendeeModel: listStatusModel?
+        for model in listDataSourceArr {
+            if (model as! listStatusModel).user_id == userId{
+                attendeeModel = (model as! listStatusModel)
+                break
+            }
+        }
+        return attendeeModel
+    }
+    
+    func updateAttendeeModelStatusWithModel(attendeeModel: listStatusModel) -> Void {
+
+          listDataSourceArr.enumerateObjects { (obj, idx, objcBool) in
+              let attendeeObj = obj as! listStatusModel
+              if attendeeModel.user_id == attendeeObj.user_id{
+                  attendeeObj.isAudioOpen = attendeeModel.isAudioOpen
+                  attendeeObj.isCameraOpen = attendeeModel.isCameraOpen
+                  attendeeObj.isScreenShareOpen = attendeeModel.isScreenShareOpen
+                  objcBool.pointee = true
+              }
+          }
+          
+          self.updateAttendeeTableViewOnMainThread()
+    }
+    
+    //更新列表
+    func updateAttendeeTableViewOnMainThread() -> Void {
+        if Thread.current == Thread.main {
+            self.tableViewlist.reloadData()
+        }else{
+            DispatchQueue.main.async {
+                self.tableViewlist.reloadData()
+            }
+        }
+    }
+
     func remoteAudioEvent(_ userId: String, eventType: FspRemoteAudioEvent) {
         print("收到远端音频")
+        
+        let attendeeModel = self.getAttendeeModelWithUrsId(userId: userId)
+        if attendeeModel != nil {
+            if eventType == .FSP_REMOTE_AUDIO_EVENT_PUBLISHED {
+                attendeeModel!.isAudioOpen = true
+            }else if eventType == .FSP_REMOTE_AUDIO_EVENT_PUBLISH_STOPED{
+                attendeeModel!.isAudioOpen = false
+            }
+            self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
+        }
+        
         DispatchQueue.main.async {
             
             let cell = self.getFreeCell(user_id: userId,video_id: "")
@@ -387,6 +457,10 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
                 cellView.cellUserIdText.stringValue = detailsModel.user_id
             }
             
+            cellView.cellScreenShareBtn.isSelected = detailsModel.isScreenShareOpen
+            cellView.cellMuteBtn.isSelected = detailsModel.isAudioOpen
+            cellView.cellVideoBtn.isSelected = detailsModel.isCameraOpen
+            
             return cellView
         }
         
@@ -447,6 +521,8 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
     
     var perSecondTimer: Timer?
     
+    var refreashListTableSignal: RACSubject = RACSubject<AnyObject>()
+    
     @IBOutlet weak var group_text_label: NSTextField!
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -474,7 +550,18 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
         }
         
         self.tableViewlist.reloadData()
-        
+
+        refreashListTableSignal.subscribeNext { (obj) in
+             for usr in fsp_manager.curGroupUsers {
+                    let model = listStatusModel()
+                    model.user_id = usr.useId
+                    model.is_selected = false
+                    model.is_online = 1
+                self.listDataSourceArr.add(model)
+            }
+                
+            self.tableViewlist.reloadData()
+        }
         
         self.initChatDefault()
         
@@ -494,6 +581,9 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
             modelList.user_id = des
             modelList.is_selected = false
             modelList.is_online = 1
+            modelList.isCameraOpen = false
+            modelList.isAudioOpen = false
+            modelList.isScreenShareOpen = false
             self.listDataSourceArr.add(modelList)
             self.tableViewlist.reloadData()
             
@@ -645,9 +735,9 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.tableViewlist.register(NSNib.init(nibNamed: "FspMeetingListControlCell", bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MeetingListControlCell"))
+        self.tableViewlist.register(NSNib.init(nibNamed: NSNib.Name("FspMeetingListControlCell"), bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier("MeetingListControlCell"))
 
-        self.msgTableView.register(NSNib.init(nibNamed: "FspMeetingMsgViewCell", bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CusMsgCell"))
+        self.msgTableView.register(NSNib.init(nibNamed: NSNib.Name("FspMeetingMsgViewCell"), bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CusMsgCell"))
         
         self.topView.wantsLayer = true
         self.topView.layer?.backgroundColor = .white
@@ -735,7 +825,7 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
     @IBOutlet weak var bottomToolBar: NSView!
     @IBOutlet weak var popBtn_ChatUser: NSPopUpButton!
     @IBAction func settingBtnDidClick(_ sender: Any) {
-        let settingWindow = FspSettingWindowController(windowNibName: "FspSettingWindowController")
+        let settingWindow = FspSettingWindowController(windowNibName: NSNib.Name("FspSettingWindowController"))
         NSApplication.shared.runModal(for: settingWindow.window!)
         
     }
@@ -805,12 +895,6 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
         
         //显示placehold
     }
-    
-
-    
-    
-    
-    
     
     func labelAutoCalculateRectWith(text: String, textFont: NSFont, maxSize: NSSize) -> NSSize {
         let attributes = [NSAttributedString.Key.font : textFont]
@@ -925,16 +1009,19 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
             return
         }
         
+        let index = fsp_manager.fsp_engine!.getCurrentMicrophoneDevice()
+        
         let theMenu = NSMenu.init(title: "Microphone Contextual Menu")
         var nItemIndex = 0
         for microphoneDeviceInfo in arrMicrophoneDevices {
             let menuTitle = NSString(format: "  麦克风(%@)", microphoneDeviceInfo.deviceName! as NSString)
             let videoMenuItem = theMenu.insertItem(withTitle: menuTitle as String, action: #selector(onMenuItemMicphone(menuItem:)), keyEquivalent: "", at: nItemIndex)
             videoMenuItem.tag = microphoneDeviceInfo.deviceId
-            if isAudioPublishing == false{
-                videoMenuItem.image = NSImage(named: "checkbox.png")
+            
+            if isAudioPublishing == true && microphoneDeviceInfo.deviceId == index {
+                videoMenuItem.image = NSImage(named: NSImage.Name("checkbox_sel.png"))
             }else{
-                videoMenuItem.image = NSImage(named: "checkbox_sel.png")
+                videoMenuItem.image = NSImage(named: NSImage.Name("checkbox.png"))
             }
 
             nItemIndex = nItemIndex + 1
@@ -953,33 +1040,84 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
     
     @objc
     func onMenuItemMicphone(menuItem: NSMenuItem) -> Void {
+        
         var msg = ""
-        if isAudioPublishing == true {
-            let fspErr = fsp_manager.stopPublishAudio()
-            msg = "用户id: " + fsp_manager.userID! + " 停止广播音频流！"
-            if fspErr == FspErrCode.FSP_ERR_OK{
-                isAudioPublishing = false
+        let menuIndex = menuItem.tag
+        let cur_index = fsp_manager.fsp_engine!.getCurrentMicrophoneDevice()
+        print(cur_index)
+        let arrMicrophoneDevices =  fsp_manager.getMicrophoneDevices()
+        if arrMicrophoneDevices.count == 1 {
+            //只有一个设备
+            if isAudioPublishing == true {
+                let fspErr = fsp_manager.stopPublishAudio()
+                msg = "用户id: " + fsp_manager.userID! + " 停止广播音频流！"
+                if fspErr == FspErrCode.FSP_ERR_OK{
+                   isAudioPublishing = false
+                }else{
+                   print("stop publish audio fail :%d",fspErr)
+                }
             }else{
-                print("stop publish audio fail :%d",fspErr)
+                let fspErr = fsp_manager.startPublishAudio()
+                msg = "用户id: " + fsp_manager.userID! + " 开始广播音频流！"
+                if fspErr == FspErrCode.FSP_ERR_OK{
+                    isAudioPublishing = true
+                }else{
+                    isAudioPublishing = false
+                    print("start publish audio fail :%d",fspErr)
+                }
             }
+            
         }else{
-            let fspErr = fsp_manager.startPublishAudio()
-            msg = "用户id: " + fsp_manager.userID! + " 开始广播音频流！"
-            if fspErr == FspErrCode.FSP_ERR_OK{
-                isAudioPublishing = true
+            //有广播 先停掉
+            if isAudioPublishing == true {
+                let fspErr = fsp_manager.stopPublishAudio()
+                msg = "用户id: " + fsp_manager.userID! + " 停止广播音频流！"
+                if fspErr == FspErrCode.FSP_ERR_OK{
+                   isAudioPublishing = false
+                }else{
+                   print("stop publish audio fail :%d",fspErr)
+                    return
+                }
+                
+                if menuItem.tag != cur_index {
+                    fsp_manager.fsp_engine!.setCurrentMicrophoneDevice(menuIndex)
+                    let fspErr = fsp_manager.startPublishAudio()
+                    msg = "用户id: " + fsp_manager.userID! + " 开始广播音频流！"
+                    if fspErr == FspErrCode.FSP_ERR_OK{
+                        isAudioPublishing = true
+                    }else{
+                        isAudioPublishing = false
+                        print("start publish audio fail :%d",fspErr)
+                    }
+                }
+                
             }else{
-                isAudioPublishing = false
-                print("start publish audio fail :%d",fspErr)
+                //没广播
+                fsp_manager.fsp_engine!.setCurrentMicrophoneDevice(menuIndex)
+                let fspErr = fsp_manager.startPublishAudio()
+                msg = "用户id: " + fsp_manager.userID! + " 开始广播音频流！"
+                if fspErr == FspErrCode.FSP_ERR_OK{
+                    isAudioPublishing = true
+                }else{
+                    isAudioPublishing = false
+                    print("start publish audio fail :%d",fspErr)
+                }
+                
+                
             }
+            
+            
+            
+        }
 
+      
+        
+        let attendeeModel = self.getAttendeeModelWithUrsId(userId: fsp_manager.userID)
+        if (attendeeModel != nil){
+            attendeeModel!.isAudioOpen = isAudioPublishing
+            self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
         }
         
-        /*
-        let msgModel = FspMsgModel()
-        msgModel.descriptionString = msg
-        msgDataSource.add(msgModel)
-        msgTableView.reloadData()
- */
         print("我开关音频广播")
     }
     
@@ -1006,9 +1144,9 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
             let videoMenuItem = theMenu.insertItem(withTitle: menuTitle as String, action: #selector(onMenuItemVideo(menuItem:)), keyEquivalent: "", at: nItemIndex)
             videoMenuItem.tag = videoDeviceInfo.cameraId
             if fsp_manager.getCameraPublishedVideoId(cameraId: videoDeviceInfo.cameraId) == nil {
-                videoMenuItem.image = NSImage(named: "checkbox.png")
+                videoMenuItem.image = NSImage(named: NSImage.Name("checkbox.png"))
             }else{
-                videoMenuItem.image = NSImage(named: "checkbox_sel.png")
+                videoMenuItem.image = NSImage(named: NSImage.Name("checkbox_sel.png"))
             }
             nItemIndex = nItemIndex + 1
         }
@@ -1040,10 +1178,17 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
             if fspErr != FspErrCode.FSP_ERR_OK {
                 debugPrint("start publish video fail :%d",fspErr)
                 fsp_manager.stopPublishVideo(videoId: videoId)
+                let attendeeModel = self.getAttendeeModelWithUrsId(userId: fsp_manager.userID)
+                if (attendeeModel != nil){
+                    attendeeModel!.isCameraOpen = false
+                    self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
+                }
                 return
+            }else{
+                let profile = FspVideoProfile(video_width, height: video_height, framerate: video_fsp)
+                fsp_manager.fsp_engine!.setVideoProfile(videoId, profile: profile)
             }
-            
-
+        
             let cell = self.getFreeCell(user_id: videoId,video_id: videoId)
             if cell != nil{
                 cell!.noVideoStatusView.isHidden = true
@@ -1054,10 +1199,13 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
                 cell?.user_Id = fsp_manager.userID
                 
                 _ = fsp_manager.addVideoPreview(nCameraId: nCameraId, nRenderView: cell!.renderView, nMode: .FSP_RENDERMODE_SCALE_FILL)
-     
+                let attendeeModel = self.getAttendeeModelWithUrsId(userId: fsp_manager.userID)
+                if (attendeeModel != nil){
+                    attendeeModel!.isCameraOpen = true
+                    self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
+                }
             }else{
                 print("没有空闲的cell")
-       
                 return
             }
  
@@ -1065,6 +1213,12 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
             
             let videoId = self.generateVideoId(cameraId: nCameraId)
             _ = fsp_manager.stopPublishVideo(videoId: videoId)
+            
+            let attendeeModel = self.getAttendeeModelWithUrsId(userId: fsp_manager.userID)
+            if (attendeeModel != nil){
+                attendeeModel!.isCameraOpen = false
+                self.updateAttendeeModelStatusWithModel(attendeeModel: attendeeModel!)
+            }
             
             let cell = self.getFreeCell(user_id: fsp_manager.userID!,video_id: videoId)
             if cell != nil{
@@ -1082,7 +1236,6 @@ class FspMeetingVC: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWind
         
         
         self.msgTableView.reloadData()
-        
     }
 
     func generateVideoId(cameraId: Int) -> String {

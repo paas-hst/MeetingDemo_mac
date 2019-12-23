@@ -57,15 +57,15 @@
 		49684E67228119C0001B8F15 /* FspMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49684E66228119C0001B8F15 /* FspMsgModel.swift */; };
 		49684ED22283F966001B8F15 /* FspTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49684ED02283F966001B8F15 /* FspTextView.m */; };
 		49AA364C22FC1BA30014C42B /* FspAttendeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AA364B22FC1BA30014C42B /* FspAttendeeModel.swift */; };
+		84134BD72303B068003BF8BB /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84134BD62303B068003BF8BB /* FspKit.framework */; };
+		84134BD82303B076003BF8BB /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84134BD62303B068003BF8BB /* FspKit.framework */; };
+		84134BD92303B076003BF8BB /* FspKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84134BD62303B068003BF8BB /* FspKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		847D597D2085D43F00C47074 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597C2085D43500C47074 /* CoreMedia.framework */; };
 		847D59832085D46700C47074 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59822085D46700C47074 /* libiconv.tbd */; };
 		847D59852085D46C00C47074 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59842085D46C00C47074 /* libstdc++.tbd */; };
 		847D59872085D47500C47074 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D59802085D45B00C47074 /* AudioToolbox.framework */; };
 		847D59882085D47F00C47074 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597E2085D44900C47074 /* VideoToolbox.framework */; };
 		847D59892085D50200C47074 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847D597F2085D45100C47074 /* CoreAudio.framework */; };
-		84C733342304271900E5D7D2 /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C733332304271900E5D7D2 /* FspKit.framework */; };
-		84C733352304272700E5D7D2 /* FspKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C733332304271900E5D7D2 /* FspKit.framework */; };
-		84C733362304272700E5D7D2 /* FspKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84C733332304271900E5D7D2 /* FspKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84F2AD3320CA9C9000413058 /* MeetingDemo.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847D59622085D29500C47074 /* MeetingDemo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84FD677320AC2FDE00548D04 /* VideoDecodeAcceleration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FD677220AC2FD600548D04 /* VideoDecodeAcceleration.framework */; };
 		84FD677520AC2FE700548D04 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FD677420AC2FE700548D04 /* libz.1.2.8.tbd */; };
@@ -79,14 +79,14 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4953BA5822F970920013AE85 /* ReactiveObjC.framework in CopyFiles */,
-				84C733362304272700E5D7D2 /* FspKit.framework in CopyFiles */,
+				84134BD92303B076003BF8BB /* FspKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		84F2AD3220CA9C8200413058 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = "${PROJECT_DIR}../../../output/demos/mac";
+			dstPath = "${PROJECT_DIR}../../../output/demo/macos";
 			dstSubfolderSpec = 0;
 			files = (
 				84F2AD3320CA9C9000413058 /* MeetingDemo.app in CopyFiles */,
@@ -158,6 +158,7 @@
 		49684ED02283F966001B8F15 /* FspTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FspTextView.m; sourceTree = "<group>"; };
 		49684ED12283F966001B8F15 /* FspTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FspTextView.h; sourceTree = "<group>"; };
 		49AA364B22FC1BA30014C42B /* FspAttendeeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FspAttendeeModel.swift; sourceTree = "<group>"; };
+		84134BD62303B068003BF8BB /* FspKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FspKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847D59622085D29500C47074 /* MeetingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847D597C2085D43500C47074 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		847D597E2085D44900C47074 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
@@ -166,7 +167,6 @@
 		847D59812085D46000C47074 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		847D59822085D46700C47074 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		847D59842085D46C00C47074 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		84C733332304271900E5D7D2 /* FspKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FspKit.framework; sourceTree = "<group>"; };
 		84FD677220AC2FD600548D04 /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = SDKROOT; };
 		84FD677420AC2FE700548D04 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -176,12 +176,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C733342304271900E5D7D2 /* FspKit.framework in Frameworks */,
+				84134BD72303B068003BF8BB /* FspKit.framework in Frameworks */,
 				4953BA5722F970920013AE85 /* ReactiveObjC.framework in Frameworks */,
 				84FD677320AC2FDE00548D04 /* VideoDecodeAcceleration.framework in Frameworks */,
 				847D59852085D46C00C47074 /* libstdc++.tbd in Frameworks */,
 				84FD677520AC2FE700548D04 /* libz.1.2.8.tbd in Frameworks */,
-				84C733352304272700E5D7D2 /* FspKit.framework in Frameworks */,
+				84134BD82303B076003BF8BB /* FspKit.framework in Frameworks */,
 				847D59832085D46700C47074 /* libiconv.tbd in Frameworks */,
 				847D59872085D47500C47074 /* AudioToolbox.framework in Frameworks */,
 				847D59892085D50200C47074 /* CoreAudio.framework in Frameworks */,
@@ -386,7 +386,7 @@
 		847D59792085D41100C47074 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84C733332304271900E5D7D2 /* FspKit.framework */,
+				84134BD62303B068003BF8BB /* FspKit.framework */,
 				4953BA5322F96F9C0013AE85 /* ReactiveObjC.framework */,
 				84FD677420AC2FE700548D04 /* libz.1.2.8.tbd */,
 				84FD677220AC2FD600548D04 /* VideoDecodeAcceleration.framework */,
@@ -597,7 +597,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../output/mac;
+				FRAMEWORK_SEARCH_PATHS = ../../output/sdk/macos;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -652,7 +652,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../output/mac;
+				FRAMEWORK_SEARCH_PATHS = ../../output/sdk/macos;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -690,7 +690,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingDemo/MeetingDemo-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -715,7 +715,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingDemo/MeetingDemo-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

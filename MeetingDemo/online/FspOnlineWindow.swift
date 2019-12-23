@@ -14,6 +14,12 @@ class listStatusModel: NSObject {
     var is_online = 1
     //是否选中
     var is_selected = false
+    //麦克风
+    var isAudioOpen = false
+    //屏幕共享
+    var isScreenShareOpen = false
+    //视频
+    var isCameraOpen = false
 }
 
 class FspOnlineWindow: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSWindowDelegate,NSTextFieldDelegate, FspInputTextFieldDelegate{
@@ -108,8 +114,8 @@ class FspOnlineWindow: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSW
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"), owner: nil) as! onlineListTableCell
-        cellView.cellChooseImage.image = NSImage(named: "group_2")
-        cellView.cellImageIcon.image = NSImage(named: "Group")
+        cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_2"))
+        cellView.cellImageIcon.image = NSImage(named: NSImage.Name("Group"))
         
         var detailsModel: listStatusModel!
         
@@ -127,9 +133,9 @@ class FspOnlineWindow: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSW
             cellView.cellChooseImage.isHidden = false
         }
         if detailsModel.is_selected {
-            cellView.cellChooseImage.image = NSImage(named: "group_3")
+            cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_3"))
         }else{
-            cellView.cellChooseImage.image = NSImage(named: "group_2")
+            cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_2"))
         }
         return cellView
     }
@@ -212,7 +218,7 @@ class FspOnlineWindow: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSW
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.listTableView.register(NSNib.init(nibNamed: "onlineListTableCell", bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"))
+        self.listTableView.register(NSNib.init(nibNamed: NSNib.Name("onlineListTableCell"), bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"))
         
         self.topSelectView.wantsLayer = true
         self.topSelectView.layer?.backgroundColor = .white
@@ -249,11 +255,11 @@ class FspOnlineWindow: FspWindowVC,NSTableViewDelegate,NSTableViewDataSource,NSW
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        self.joinBtnDid.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.joinBtnDid.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         
-        self._btn_meeting_Accept.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self._btn_meeting_Accept.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         
-        self._btn_meeting_reject.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self._btn_meeting_reject.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         self.window!.makeKey()

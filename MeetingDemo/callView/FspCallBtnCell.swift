@@ -16,9 +16,9 @@ class FspCallBtnCell: NSButtonCell {
         }set{
             isSeleted = newValue
             if isSeleted == true {
-                self.image = NSImage(named: "group_3")
+                self.image = NSImage(named: NSImage.Name("group_3"))
             }else{
-                self.image = NSImage(named: "group_2")
+                self.image = NSImage(named: NSImage.Name("group_2"))
             }
         }
     }

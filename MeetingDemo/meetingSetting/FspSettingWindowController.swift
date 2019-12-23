@@ -284,8 +284,8 @@ class FspSettingWindowController: NSWindowController,NSWindowDelegate {
         self.audioSeperatorViewSec.wantsLayer = true
         self.audioSeperatorViewSec.layer?.backgroundColor = graycolor
         
-        self.audioEnsureBtnDidClick.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
-        self.audioCancleBtnDidClick.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.audioEnsureBtnDidClick.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
+        self.audioCancleBtnDidClick.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         self.bgView.addSubview(audio_settingView)
         audio_settingView.frame = self.bgView.bounds
         
@@ -343,22 +343,68 @@ class FspSettingWindowController: NSWindowController,NSWindowDelegate {
     }
     
     //MARK:摄像头页面事件
+    @IBOutlet weak var pbCameraPresetCombox: NSComboBox!
     @IBOutlet weak var videoFpsSlider: NSSlider!
     @IBOutlet weak var videoSeperatorView: NSView!
     @IBOutlet var videoView: NSView!
     @IBOutlet weak var videoRenderView: NSView!
     @IBOutlet weak var no_video_status_view: NSView!
-    @IBOutlet weak var pbCameraCombox: NSComboBox!
     
+    @IBOutlet weak var fspDecriptionLabel: NSTextField!
+    @IBOutlet weak var pbCameraCombox: NSComboBox!
     var previewCameraId = FSP_INVALID_CAMERA_ID
     
     @IBAction func videoViewCameraSelected(_ sender: Any) {
-        let index_for_combox = pbCameraCombox.indexOfSelectedItem
-        let deviceInfo = pbCameraCombox.itemObjectValue(at: index_for_combox) as! FspVideoDeviceInfo
-        self.preViewCamera(cameraId: deviceInfo.cameraId)
-    }
-    @IBAction func videoViewCameraPresetSeleted(_ sender: Any) {
         
+        if sender as? NSComboBox == pbCameraCombox {
+            let index_for_combox = pbCameraCombox.indexOfSelectedItem
+            let deviceInfo = pbCameraCombox.itemObjectValue(at: index_for_combox) as! FspVideoDeviceInfo
+            self.preViewCamera(cameraId: deviceInfo.cameraId)
+        }else if sender as? NSComboBox == pbCameraPresetCombox{
+            
+            let index = pbCameraPresetCombox.indexOfSelectedItem
+            print("设置分辨率",index)
+            switch index {
+            case 0:
+                video_width = 1280
+                video_height = 720
+                video_choose_preset_index = 0
+                break
+            case 1:
+                video_width = 640
+                video_height = 480
+                video_choose_preset_index = 1
+                break
+            case 2:
+                video_width = 640
+                video_height = 360
+                video_choose_preset_index = 2
+                break
+            case 3:
+                video_width = 352
+                video_height = 288
+                video_choose_preset_index = 3
+                break
+            default:
+                video_width = 640
+                video_height = 360
+                video_choose_preset_index = -1
+            }
+            let videoID = self.generateVideoId(cameraId: previewCameraId)
+            let profile = FspVideoProfile(video_width, height: video_height, framerate: video_fsp)
+            fsp_manager.fsp_engine!.setVideoProfile(videoID, profile: profile)
+        }else if sender as? NSSlider == videoFpsSlider{
+            print("切换帧率")
+            fspDecriptionLabel.stringValue = "当前帧率:" + String(videoFpsSlider.intValue)
+            video_fsp = Int(videoFpsSlider.intValue)
+            let videoID = self.generateVideoId(cameraId: previewCameraId)
+            let profile = FspVideoProfile(video_width, height: video_height, framerate: video_fsp)
+            fsp_manager.fsp_engine!.setVideoProfile(videoID, profile: profile)
+        }
+    }
+    
+    func generateVideoId(cameraId: Int) -> String {
+        return NSString(format: "macvideo%d", cameraId) as String
     }
     
     func initVideoView() -> Void {
@@ -388,7 +434,12 @@ class FspSettingWindowController: NSWindowController,NSWindowDelegate {
             self.preViewCamera(cameraId: videoInfo.cameraId)
             pbCameraCombox.selectItem(at: 0)
         }
-        
+        if video_choose_preset_index == -1 {
+            self.pbCameraPresetCombox.selectItem(at: 2)
+        }else{
+            self.pbCameraPresetCombox.selectItem(at: video_choose_preset_index)
+        }
+        self.videoViewCameraSelected(pbCameraPresetCombox)
     }
     
     func preViewCamera(cameraId: Int) -> Void {
@@ -405,11 +456,6 @@ class FspSettingWindowController: NSWindowController,NSWindowDelegate {
         if previewCameraId != FSP_INVALID_CAMERA_ID {
            _ = fsp_manager.removeVideoPreview(nCameraId: previewCameraId, nRenderView: videoRenderView)
         }
-    }
-    
-    
-    @IBAction func videoFspSliderDidValueChanged(_ sender: Any) {
-        
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -430,4 +476,5 @@ class FspSettingWindowController: NSWindowController,NSWindowDelegate {
         _perSecondTimer?.invalidate()
         self.window?.close()
     }
+    
 }

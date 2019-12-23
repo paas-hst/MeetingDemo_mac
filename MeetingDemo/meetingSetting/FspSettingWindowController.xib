@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,11 +15,13 @@
                 <outlet property="audioSeperatorViewSec" destination="bQz-on-Ram" id="8AY-eC-pzs"/>
                 <outlet property="audio_settingView" destination="SgI-Rv-aqr" id="ryW-tn-tYF"/>
                 <outlet property="bgView" destination="tMO-06-xzu" id="3yJ-6d-nRt"/>
+                <outlet property="fspDecriptionLabel" destination="rlF-Rk-fEe" id="xA7-zb-aiv"/>
                 <outlet property="homeSeperatorView" destination="mUG-qm-zlI" id="knK-4A-Fgs"/>
                 <outlet property="localRecordBtn" destination="1oV-mI-D8l" id="Fb9-iX-84i"/>
                 <outlet property="micPhoneComBox" destination="Dg1-Rp-n7i" id="iL8-Fq-Aky"/>
                 <outlet property="no_video_status_view" destination="L2G-qc-DoF" id="UXf-14-6gL"/>
                 <outlet property="pbCameraCombox" destination="B4C-X4-XWZ" id="Hpp-LH-1OA"/>
+                <outlet property="pbCameraPresetCombox" destination="FjM-EV-Hwr" id="Hhp-WW-0eh"/>
                 <outlet property="pbMicrophoneEnergy" destination="rpT-be-H1q" id="f1A-r8-3TV"/>
                 <outlet property="pbSpeakerEnergy" destination="tPN-TC-UwE" id="zW8-Za-m04"/>
                 <outlet property="screenShareBtn" destination="Vbp-W0-Kne" id="sm3-VN-LPm"/>
@@ -198,7 +200,7 @@
                         <constraint firstAttribute="width" constant="400" id="7VH-yd-pYd"/>
                         <constraint firstAttribute="height" constant="26" id="QFz-Wr-lOS"/>
                     </constraints>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="djU-tm-XAT">
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="djU-tm-XAT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -214,7 +216,7 @@
                         <constraint firstAttribute="height" constant="22" id="Y6z-S2-sZ7"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="设备:" id="kPN-Or-oRh">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -249,7 +251,7 @@
                         <constraint firstAttribute="height" constant="22" id="wf7-yx-Uy2"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="音量:" id="sxf-ap-pi0">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -261,7 +263,7 @@
                         <constraint firstAttribute="height" constant="22" id="Q0l-2W-nJu"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="能量:" id="mRA-vo-7eW">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -280,7 +282,7 @@
                         <constraint firstAttribute="width" constant="50" id="faK-BC-q0f"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="扬声器" id="MNp-Kb-kMo">
-                        <font key="font" size="16" name=".PingFangSC-Regular"/>
+                        <font key="font" metaFont="system" size="16"/>
                         <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -301,7 +303,7 @@
                         <constraint firstAttribute="width" constant="47" id="a4v-Kr-gDO"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="设备:" id="UcK-mr-A4t">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -315,7 +317,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Wuc-07-NS9"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="音量:" id="HwN-d0-sDp">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -329,7 +331,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="bV6-A2-hkK"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="能量:" id="gxl-n9-PNe">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -342,7 +344,7 @@
                         <constraint firstAttribute="width" constant="400" id="bTl-dz-XdT"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="kK8-Vw-Pgl"/>
                     </constraints>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="Ljh-w6-nv6">
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="Ljh-w6-nv6">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -437,7 +439,7 @@
                         <constraint firstAttribute="height" constant="22" id="eyg-xG-tFc"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="帧率:" id="rgz-D2-mI9">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -450,7 +452,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="i7o-UV-a2m"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="分辨率:" id="tTB-oH-4Im">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -463,7 +465,7 @@
                         <constraint firstAttribute="width" constant="47" id="NaR-Xv-2Tc"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="设备:" id="xpC-pQ-OlY">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="menu" size="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -474,9 +476,9 @@
                         <constraint firstAttribute="height" constant="15" id="mwl-xl-aW3"/>
                         <constraint firstAttribute="width" constant="400" id="qMF-FC-hE0"/>
                     </constraints>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="n8o-oW-fvF"/>
+                    <sliderCell key="cell" state="on" alignment="left" minValue="10" maxValue="30" doubleValue="15" tickMarkPosition="above" sliderType="linear" id="n8o-oW-fvF"/>
                     <connections>
-                        <action selector="videoFspSliderDidValueChanged:" target="-2" id="y6D-oX-BFf"/>
+                        <action selector="videoViewCameraSelected:" target="-2" id="HpH-cv-NRX"/>
                     </connections>
                 </slider>
                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-EV-Hwr">
@@ -486,13 +488,19 @@
                         <constraint firstAttribute="width" constant="400" id="950-pB-BFX"/>
                         <constraint firstAttribute="height" constant="26" id="guW-AP-6xe"/>
                     </constraints>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="qc6-7e-uOg">
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="qc6-7e-uOg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <objectValues>
+                            <string>1280*720</string>
+                            <string>640*480</string>
+                            <string>640*360</string>
+                            <string>352*288</string>
+                        </objectValues>
                     </comboBoxCell>
                     <connections>
-                        <action selector="videoViewCameraPresetSeleted:" target="-2" id="ub1-GX-zd1"/>
+                        <action selector="videoViewCameraSelected:" target="-2" id="PmO-Qq-GM7"/>
                     </connections>
                 </comboBox>
                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4C-X4-XWZ">
@@ -502,13 +510,13 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="LEt-Ec-IkU"/>
                         <constraint firstAttribute="width" constant="400" id="ZsF-co-RMj"/>
                     </constraints>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="3XN-ba-O5B">
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="3XN-ba-O5B">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </comboBoxCell>
                     <connections>
-                        <action selector="videoViewCameraSelected:" target="-2" id="JF2-j7-XQj"/>
+                        <action selector="videoViewCameraSelected:" target="-2" id="r0B-k9-UCu"/>
                     </connections>
                 </comboBox>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="fOP-cw-klj">
@@ -532,7 +540,7 @@
                                         <constraint firstAttribute="height" constant="17" id="rCi-G4-XnP"/>
                                     </constraints>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="无视频" id="9Vy-V8-Mxj">
-                                        <font key="font" metaFont="system" size="14"/>
+                                        <font key="font" metaFont="menu" size="14"/>
                                         <color key="textColor" red="0.70980392156862748" green="0.74117647058823533" blue="0.77254901960784317" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -557,6 +565,33 @@
                         <constraint firstAttribute="bottom" secondItem="L2G-qc-DoF" secondAttribute="bottom" id="x3D-4a-fzb"/>
                     </constraints>
                 </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84W-wa-0Ok">
+                    <rect key="frame" x="103" y="333" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="10" id="KgH-V0-lVb">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ih5-E6-RCg">
+                    <rect key="frame" x="484" y="333" width="21" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="30" id="vQi-y4-X7c">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rlF-Rk-fEe">
+                    <rect key="frame" x="229" y="333" width="103" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="当前帧率：15" id="nYE-47-mhe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="W8W-gY-8O4" firstAttribute="top" secondItem="RMJ-cj-e47" secondAttribute="top" constant="15" id="0XI-br-Guq"/>
@@ -581,7 +616,7 @@
                 <constraint firstAttribute="trailing" secondItem="fOP-cw-klj" secondAttribute="trailing" constant="157" id="rd5-jw-M4o"/>
                 <constraint firstItem="U80-gq-XdQ" firstAttribute="leading" secondItem="RMJ-cj-e47" secondAttribute="leading" constant="40" id="wmj-rC-740"/>
             </constraints>
-            <point key="canvasLocation" x="571" y="757.5"/>
+            <point key="canvasLocation" x="1397" y="551.5"/>
         </customView>
     </objects>
     <resources>

@@ -30,7 +30,7 @@ class FspToolAlert: NSAlert {
         self.addButton(withTitle: "OK")
     }
     
-    var iconImage: NSImage = NSImage(named: "Group")!
+    var iconImage: NSImage = NSImage(named: NSImage.Name("Group"))!
     
     override var icon: NSImage!{
         get{

@@ -15,14 +15,30 @@ let theApp = NSApplication.shared.delegate as! AppDelegate
 
 //用户自己的登录账号
 let CONFIG_USE_ID_KEY = "config use id key"
-//是否使用默认配置
-let CONFIG_USE_DEFAULT_OPEN_KEY = "config use default open key"
 //自定义的appid
 let CONFIG_APP_ID_KEY = "config_app_id_key"
 //自定义的app_secret
 let CONFIG_APP_SECRET_KEY = "config_app_secret_key"
 //自定义的服务器地址
 let CONFIG_SERVER_ADDRESS_KEY = "config_server_address_key"
+
+/*分辨率
+ 1: 1280*720
+ 2: 640*480
+ 3: 640*360
+ 4: 352*288
+ */
+let CONFIG_SESSION_PRESET = "config_session_preset"
+/*帧率
+ 10-30帧
+ */
+let CONGIG_SESSION_FRAMERATE = "config_session_framerate"
+
+var video_width = 640
+var video_height = 360
+var video_fsp = 15
+var video_choose_preset_index = -1
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDelegate{
@@ -78,10 +94,13 @@ class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDe
     var meetingVc: FspMeetingVC?
     public var callView: FspCallingWindow?
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-    
+        
         fsp_manager.singallingDelegate = self
         
-        loginWindow = FspLoginWindow(windowNibName: "FspLoginWindow")
+        UserDefaults.standard.set(2, forKey: CONFIG_SESSION_PRESET)
+        UserDefaults.standard.set(15, forKey: CONGIG_SESSION_FRAMERATE)
+        
+        loginWindow = FspLoginWindow(windowNibName: NSNib.Name("FspLoginWindow"))
         loginWindow?.window?.makeKeyAndOrderFront(nil)
         loginWindow?.window?.center()
         loginWindow?.window?.makeKey()
@@ -137,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDe
         if appCanSwitch == true {
             self.loginWindow?.close()
             self.loginWindow?.window?.orderOut(nil)
-            self.online = FspOnlineWindow(windowNibName: "FspOnlineWindow")
+            self.online = FspOnlineWindow(windowNibName: NSNib.Name("FspOnlineWindow"))
             self.online!.window!.makeKeyAndOrderFront(nil)
             online?.window?.center()
         }
@@ -148,7 +167,9 @@ class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDe
     func gotoMainWindow() -> Void {
         self.online?.close()
         self.online?.window?.orderOut(nil)
-        meetingVc = FspMeetingVC(windowNibName: "FspMeetingVC")
+        meetingVc = FspMeetingVC(windowNibName: NSNib.Name("FspMeetingVC"))
+        fsp_manager.delegate = meetingVc
+        fsp_manager.cur_window = meetingVc
         meetingVc!.window!.makeKeyAndOrderFront(nil)
         meetingVc!.window?.center()
     }
@@ -170,7 +191,7 @@ class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDe
     
     public func switchToMainView() -> Void {
         
-        self.performSelector(onMainThread: #selector(gotoMainWindow), with: nil, waitUntilDone: false)
+        self.performSelector(onMainThread: #selector(gotoMainWindow), with: nil, waitUntilDone: true)
     }
     
     public func switchToCallingView() -> Void{
@@ -182,7 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate ,FspManagerRemoteSignallingDe
         if callView != nil {
             callView = nil
         }
-        callView = FspCallingWindow(windowNibName: "FspCallingWindow")
+        callView = FspCallingWindow(windowNibName: NSNib.Name("FspCallingWindow"))
         callView!.window!.makeKeyAndOrderFront(nil)
         callView!.window?.center()
         callView!.meetingWindow = self.meetingVc

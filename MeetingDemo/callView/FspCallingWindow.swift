@@ -91,8 +91,8 @@ class FspCallingWindow: FspWindowVC, NSTableViewDelegate,NSTableViewDataSource,N
         
         let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"), owner: nil) as! onlineListTableCell
         
-        cellView.cellChooseImage.image = NSImage(named: "group_2")
-        cellView.cellImageIcon.image = NSImage(named: "Group")
+        cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_2"))
+        cellView.cellImageIcon.image = NSImage(named: NSImage.Name("Group"))
         let detailsModel = self.listDataSourceArr[row] as! listStatusModel
         cellView.cellTextLabel.stringValue = detailsModel.user_id
         if detailsModel.user_id == fsp_manager.groupID {
@@ -102,9 +102,9 @@ class FspCallingWindow: FspWindowVC, NSTableViewDelegate,NSTableViewDataSource,N
             cellView.cellChooseImage.isHidden = false
         }
         if detailsModel.is_selected {
-            cellView.cellChooseImage.image = NSImage(named: "group_3")
+            cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_3"))
         }else{
-            cellView.cellChooseImage.image = NSImage(named: "group_2")
+            cellView.cellChooseImage.image = NSImage(named: NSImage.Name("group_2"))
         }
         return cellView
     }
@@ -221,9 +221,9 @@ class FspCallingWindow: FspWindowVC, NSTableViewDelegate,NSTableViewDataSource,N
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.tableView.register(NSNib.init(nibNamed: "onlineListTableCell", bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"))
+        self.tableView.register(NSNib.init(nibNamed: NSNib.Name("onlineListTableCell"), bundle: Bundle.main), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomCell"))
        
-        self.callBtn.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.callBtn.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
 
         self.bottomView.wantsLayer = true
         self.bottomView.layer?.backgroundColor = NSColor.white.cgColor

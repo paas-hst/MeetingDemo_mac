@@ -34,13 +34,13 @@ class FspSettingsWindow: FspWindowVC {
         let Seperatorcolor = NSColor.init(red: 214.0/255, green: 214.0/255, blue: 214.0/255, alpha: 1.0)
         self.seperatorLineView.layer?.backgroundColor = Seperatorcolor.cgColor
         
-        self.cancleBtn.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.cancleBtn.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         
-        self.ensureBtn.setImages(NSImage.init(named: "login_btn"), hot: NSImage.init(named: "login_btn_hot"), press: NSImage.init(named: "login_btn_pressed"), disable: NSImage.init(named: "login_btn_pressed"))
+        self.ensureBtn.setImages(NSImage.init(named: NSImage.Name("login_btn")), hot: NSImage.init(named: NSImage.Name("login_btn_hot")), press: NSImage.init(named: NSImage.Name("login_btn_pressed")), disable: NSImage.init(named: NSImage.Name("login_btn_pressed")))
         
         
         
-        let use_custom_id = UserDefaults.standard.bool(forKey: CONFIG_USE_DEFAULT_OPEN_KEY)
+        let use_custom_id = UserDefaults.standard.bool(forKey: CONFIG_KEY_USECONFIG)
         if use_custom_id == true {
             //使用自定义m配置
             self.anti_DefaultBtn.state = .on
@@ -78,27 +78,44 @@ class FspSettingsWindow: FspWindowVC {
     @IBAction func ensureBtnDidClick(_ sender: Any) {
         print("确认按钮")
         
-        let strAppId = appIDTextField.stringValue
-        let strSecretKey = appSecretTextField.stringValue
-        let strServerAddr = serverTextField.stringValue
-        
-        if strAppId.count <= 0 || strSecretKey.count <= 0 || strServerAddr.count <= 0 {
-            //用回默认
-            //啥都不改
-            UserDefaults.standard.set(true, forKey: CONFIG_USE_DEFAULT_OPEN_KEY)
-            UserDefaults.standard.set(false, forKey: CONFIG_KEY_USECONFIG)
-        }else{
-            
-            UserDefaults.standard.set(false, forKey: CONFIG_USE_DEFAULT_OPEN_KEY)
+        if self.isDefaultBtn.state == .off {
+            //自定义
             UserDefaults.standard.set(true, forKey: CONFIG_KEY_USECONFIG)
-            
-            UserDefaults.standard.set(strAppId, forKey: CONFIG_KEY_APPID)
-            UserDefaults.standard.set(strSecretKey, forKey: CONFIG_KEY_SECRECTKEY)
-            UserDefaults.standard.set(strServerAddr, forKey: CONFIG_KEY_SERVETADDR)
-            
+        }
+        
+        if self.anti_DefaultBtn.state == .off {
+            //默认
+            UserDefaults.standard.set(false, forKey: CONFIG_KEY_USECONFIG)
+        }
+   
+        var strAppId = appIDTextField.stringValue
+        var strSecretKey = appSecretTextField.stringValue
+        var strServerAddr = serverTextField.stringValue
+
+        UserDefaults.standard.set(strAppId, forKey: CONFIG_KEY_APPID)
+        UserDefaults.standard.set(strSecretKey, forKey: CONFIG_KEY_SECRECTKEY)
+        UserDefaults.standard.set(strServerAddr, forKey: CONFIG_KEY_SERVETADDR)
+        
+        if UserDefaults.standard.bool(forKey: CONFIG_KEY_USECONFIG) == true {
+            //自定义按钮打开，使用自定义
+            if strServerAddr.count == 0 {
+                 strServerAddr = ""
+             }
+             
+             if strSecretKey.count == 0 {
+                 strSecretKey = ""
+             }
+             
+             if strAppId.count == 0 {
+                 strAppId = ""
+             }
+             
+        }else{
+            //自定义按钮关闭，使用默认
             
         }
         
+
         let theApp = NSApplication.shared.delegate as! AppDelegate
         theApp.resetManager.sendNext(nil)
         
@@ -111,13 +128,11 @@ class FspSettingsWindow: FspWindowVC {
         let btn = sender as! NSButton
         
         if btn.state == .on {
-            //使用自定义配置
-            
-            //关闭否Btn状态
+            //使用默认配置
             self.anti_DefaultBtn.state = .off
+            UserDefaults.standard.set(false, forKey: CONFIG_KEY_USECONFIG)
         }else{
             //不使用默认配置
-            
             //开启否Btn状态
             self.anti_DefaultBtn.state = .on
         }
@@ -128,18 +143,14 @@ class FspSettingsWindow: FspWindowVC {
         
         if btn.state == NSButton.StateValue.on {
             //使用自定义配置
-            
-            //关闭默认Btn状态
             self.isDefaultBtn.state = .off
+
         }else{
             //使用默认配置
-            
             //开启默认Btn状态
             self.anti_DefaultBtn.state = .on
         }
     }
-    
-    
     
     deinit {
         print("dealloc")
